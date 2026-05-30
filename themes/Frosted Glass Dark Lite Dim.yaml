@@ -5,10 +5,14 @@
 
 Frosted Glass Dark Lite Dim:
   card-mod-theme: 'Frosted Glass Dark Lite'
+  card-mod-root: |
+    ha-panel-lovelace {
+      filter: brightness(0.6) saturate(0.85) sepia(0.5);
+    }
 
   # Dim filter – applied to ha-card via filter: var(--ambient-dim-filter, none)
   # in the inherited card-mod-card CSS. Tune values to taste.
-  ambient-dim-filter: 'brightness(0.6) saturate(0.85) sepia(0.5)'
+  ambient-dim-filter: 'none'
 
   modes:                         # dark-only declaration
     dark: {}
@@ -139,7 +143,7 @@ Frosted Glass Dark Lite Dim:
   warning-color: 'rgb(255, 219, 117)'
   error-color: 'rgb(234, 114, 135)'
   background-image: "center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-dark-background.jpg')"
-  lovelace-background: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-dark-background.jpg')"
+  lovelace-background: 'var(--background-image)'
   primary-background-color: 'rgba(30, 30, 30, 1)'
   secondary-background-color: 'rgba(30, 33, 54, 0.6)'
   clear-background-color: 'rgba(30, 33, 54, 0.7)'
