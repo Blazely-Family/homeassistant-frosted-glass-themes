@@ -5,14 +5,10 @@
 
 Frosted Glass Dark Lite Dim:
   card-mod-theme: 'Frosted Glass Dark Lite'
-  card-mod-root: |
-    :host {
-      filter: brightness(0.6) saturate(0.85) sepia(0.5);
-    }
 
   # Dim filter – applied to ha-card via filter: var(--ambient-dim-filter, none)
   # in the inherited card-mod-card CSS. Tune values to taste.
-  ambient-dim-filter: 'none'
+  ambient-dim-filter: 'brightness(0.6) saturate(0.85) sepia(0.5)'
 
   modes:                         # dark-only declaration
     dark: {}
