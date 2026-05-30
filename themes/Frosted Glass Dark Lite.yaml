@@ -40,6 +40,8 @@ Frosted Glass Dark Lite:
     /* Base reset */
     ha-card {
       background: transparent;
+      filter: var(--ambient-dim-filter, none);
+      transition: filter 1.5s ease;
     }
 
     /* Glass layer (variable-driven, matches Light) */
@@ -124,7 +126,7 @@ Frosted Glass Dark Lite:
 
     /* (Removed) .bubble-button-card-container styling to avoid conflicts               # 1.2 Glass – matches Light exclusions */
 
-    /* === Active state indicator – zero layout shift === */
+    /* === Active state indicator === */
     {% set _d = config.entity.split('.')[0] if config.entity else '' %}
     {% set _s = states[config.entity].state if config.entity else '' %}
     {% set _active_map = {
@@ -152,14 +154,13 @@ Frosted Glass Dark Lite:
     {% set _active = _d in _active_map and _s in _active_map[_d] %}
     {% set _motion = _d in _motion_map and _s in _motion_map[_d] %}
     @keyframes active-border-pulse {
-      0%, 100% { outline-color: rgb(255, 158, 0); }
-      50%       { outline-color: rgba(255, 158, 0, 0.25); }
+      0%, 100% { box-shadow: var(--ha-card-box-shadow), 0 0 12px 3px rgba(255, 158, 0, 0.18); }
+      50%       { box-shadow: var(--ha-card-box-shadow), 0 0 4px 0px rgba(255, 158, 0, 0.03); }
     }
     {% if _active %}
     ha-card {
-      --ha-card-border-color: transparent;
-      outline: 2px solid rgb(255, 158, 0);
-      outline-offset: -2px;
+      --ha-card-border-color: rgba(255, 158, 0, 0.7);
+      box-shadow: var(--ha-card-box-shadow), 0 0 8px 2px rgba(255, 158, 0, 0.09);
       {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
     }
     {% endif %}
