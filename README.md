@@ -22,6 +22,8 @@ This theme brings a sophisticated "**Frosted Glass**" aesthetic to your dashboar
 - **Modern Design**: Rounded corners, minimal shadows, and cohesive color palettes. 🛋️
 - **Enhanced UX**: Designed to feel fluid, comfortable, and polished. 🖼️
 - **Lite Editions**: Optional no-blur builds for older/low-end devices. They keep the same semi-transparent, glassy look while improving performance and avoiding dropdown misplacement caused by HA’s blur handling. ⚡
+- **Active State Border**: Cards for active entities (lights on, covers open, climate active, etc.) automatically get an orange glowing 2px border and a subtle card tint — no per-card config needed. 🟠
+- **Ambient Dim Variant** (`Frosted Glass Dark Lite Dim`): A night-mode variant that dims all cards via a CSS filter. Designed to be switched to automatically via `browser_mod` based on room lux readings. 🌙
 - **Want to Customize? (New!)**: Install Frosted Glass Theme Manager to choose your own color&background! 🎨
 
 ## 🚀 Quick Installation Guide
