@@ -6,7 +6,7 @@
 Frosted Glass Dark Lite Dim:
   card-mod-theme: 'Frosted Glass Dark Lite'
   card-mod-root: |
-    ha-panel-lovelace {
+    :host {
       filter: brightness(0.6) saturate(0.85) sepia(0.5);
     }
 
