@@ -124,6 +124,46 @@ Frosted Glass Dark Lite:
 
     /* (Removed) .bubble-button-card-container styling to avoid conflicts               # 1.2 Glass – matches Light exclusions */
 
+    /* === Active state indicator – zero layout shift === */
+    {% set _d = config.entity.split('.')[0] if config.entity else '' %}
+    {% set _s = states[config.entity].state if config.entity else '' %}
+    {% set _active_map = {
+      'light':               ['on'],
+      'switch':              ['on'],
+      'fan':                 ['on'],
+      'input_boolean':       ['on'],
+      'binary_sensor':       ['on'],
+      'automation':          ['on'],
+      'script':              ['on'],
+      'humidifier':          ['on'],
+      'cover':               ['open', 'opening', 'closing'],
+      'climate':             ['heat', 'cool', 'heat_cool', 'fan_only', 'dry', 'auto'],
+      'alarm_control_panel': ['armed_home', 'armed_away', 'armed_night', 'armed_vacation', 'armed_custom_bypass', 'arming', 'disarming', 'triggered', 'pending'],
+      'lock':                ['unlocked', 'locking', 'unlocking'],
+      'media_player':        ['playing', 'paused', 'buffering'],
+      'vacuum':              ['cleaning', 'returning'],
+      'person':              ['not_home'],
+      'device_tracker':      ['not_home'],
+    } %}
+    {% set _motion_map = {
+      'cover': ['opening', 'closing'],
+      'lock':  ['locking', 'unlocking'],
+    } %}
+    {% set _active = _d in _active_map and _s in _active_map[_d] %}
+    {% set _motion = _d in _motion_map and _s in _motion_map[_d] %}
+    @keyframes active-border-pulse {
+      0%, 100% { outline-color: rgb(255, 158, 0); }
+      50%       { outline-color: rgba(255, 158, 0, 0.25); }
+    }
+    {% if _active %}
+    ha-card {
+      --ha-card-border-color: transparent;
+      outline: 2px solid rgb(255, 158, 0);
+      outline-offset: -2px;
+      {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
+    }
+    {% endif %}
+
   # =========================
   # CARD-MOD-ROOT GLOBAL CSS
   # =========================
