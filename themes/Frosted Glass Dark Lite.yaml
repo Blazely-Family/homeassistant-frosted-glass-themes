@@ -167,9 +167,10 @@ Frosted Glass Dark Lite:
     }
     {% endif %}
 
-    /* Tile card feature icons: --icon-primary-color cascades through hui-card-features
-       shadow DOM to ha-svg-icon inside ha-control-switch (which hardcodes color:white) */
-    hui-card-features {
+    /* Tile card feature toggle icons: dark icon for visibility on light-grey inactive button.
+       Scoped via ha-tile-container (only hui-tile-card uses it) so ha-control-select
+       option icons in thermostat/other cards are NOT affected. */
+    ha-tile-container hui-card-features {
       --icon-primary-color: rgba(0, 0, 0, 0.85);
     }
 
