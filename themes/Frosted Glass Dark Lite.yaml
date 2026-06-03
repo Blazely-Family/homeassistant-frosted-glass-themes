@@ -403,6 +403,7 @@ Frosted Glass Dark Lite:
   error-color: 'rgb(234, 114, 135)'
   background-image: "center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-dark-background.jpg')"
   lovelace-background: 'var(--background-image)'
+  lovelace-background-dim: "linear-gradient(rgba(60,35,5,0.45),rgba(60,35,5,0.45)), center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-dark-background.jpg')"
   primary-background-color: 'rgba(30, 30, 30, 1)'                                      # 1.2 change - improved background color for a darker feel 
   secondary-background-color: 'rgba(30, 33, 54, 0.6)'
   clear-background-color: 'rgba(30, 33, 54, 0.7)'
