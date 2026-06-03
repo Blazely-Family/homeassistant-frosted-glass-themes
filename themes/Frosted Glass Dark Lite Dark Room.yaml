@@ -11,9 +11,9 @@ Frosted Glass Dark Lite Dark Room:
   card-mod-theme: 'Frosted Glass Dark Lite'
 
   # Red-shift filter applied to every ha-card via the inherited card-mod CSS.
-  # sepia(1) converts whites/greys to warm gold → saturate(5) punches to deep orange
-  # → hue-rotate(-10deg) nudges toward red → brightness(0.4) dims to dark room levels.
-  ambient-dim-filter: 'brightness(0.4) sepia(1) saturate(5) hue-rotate(-10deg)'
+  # sepia(1) converts whites/greys to warm gold → saturate(2) deepens to orange-red
+  # → hue-rotate(-10deg) nudges toward red → brightness(0.3) dims to dark room levels.
+  ambient-dim-filter: 'brightness(0.3) sepia(1) saturate(2) hue-rotate(-10deg)'
 
   modes:
     dark: {}
