@@ -300,6 +300,11 @@ Frosted Glass Dark Lite:
       --token-color-light-blue: rgb(var(--token-rgb-light-blue));
     }
 
+    /* Toggle switch features: hardcoded color:white in shadow DOM, --icon-primary-color is the only external hook */
+    ha-control-switch {
+      --icon-primary-color: rgba(0, 0, 0, 0.85);
+    }
+
   # =========================
   # TYPOGRAPHY
   # =========================
