@@ -167,6 +167,12 @@ Frosted Glass Dark Lite:
     }
     {% endif %}
 
+    /* Tile card feature icons: --icon-primary-color cascades through hui-card-features
+       shadow DOM to ha-svg-icon inside ha-control-switch (which hardcodes color:white) */
+    hui-card-features {
+      --icon-primary-color: rgba(0, 0, 0, 0.85);
+    }
+
   # =========================
   # CARD-MOD-ROOT GLOBAL CSS
   # =========================
@@ -300,11 +306,6 @@ Frosted Glass Dark Lite:
       --token-color-light-blue: rgb(var(--token-rgb-light-blue));
     }
 
-    /* Toggle switch features: hardcoded color:white in shadow DOM, --icon-primary-color is the only external hook */
-    ha-control-switch {
-      --icon-primary-color: rgba(0, 0, 0, 0.85);
-    }
-
   # =========================
   # TYPOGRAPHY
   # =========================
@@ -383,8 +384,8 @@ Frosted Glass Dark Lite:
   disabled-text-color: 'rgba(234, 235, 238, 0.45)'
   text-light-primary-color: 'rgb(234, 235, 238)'
   paper-item-icon-color: 'rgba(234, 235, 238, 0.95)'
-  state-inactive-color: 'rgba(0, 0, 0, 0.8)'
-  state-icon-color: 'rgba(0, 0, 0, 0.95)'
+  state-inactive-color: 'rgba(234, 235, 238, 0.8)'
+  state-icon-color: 'rgba(234, 235, 238, 0.95)'
   state-on-color: 'rgb(118, 214, 152)'
   state-off-color: 'rgb(234, 114, 135)'
   label-badge-text-color: 'rgba(234, 235, 238, 0.85)'
