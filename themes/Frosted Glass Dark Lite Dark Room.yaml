@@ -1,219 +1,77 @@
 # Frosted Glass Dark Lite - Dark Room variant
 # Applied when ambient lux < 5 (brightness = 1) via browser_mod theme switching.
 # card-mod CSS is inherited from Frosted Glass Dark Lite via card-mod-theme.
-# Non-CSS theme properties below must be kept in sync with the base theme.
 #
-# Color philosophy: all whites/greys shifted to deep red spectrum.
-# No background image — pure black avoids any blue/white light bleed.
-# Red light minimises melatonin suppression and preserves dark-adapted vision.
+# Color strategy: rather than explicitly red-shifting every variable, a CSS filter
+# chain on ha-card (via ambient-dim-filter) shifts all card content to deep red
+# automatically — clock digits, icons, text, images, custom cards, everything.
+# Page-level surfaces (background, header, dialogs) are set explicitly to black.
 
 Frosted Glass Dark Lite Dark Room:
   card-mod-theme: 'Frosted Glass Dark Lite'
 
-  # Dim filter applied to ha-card — additional brightness reduction on top of
-  # already-dim red palette
-  ambient-dim-filter: 'brightness(0.65) saturate(0.8)'
+  # Red-shift filter applied to every ha-card via the inherited card-mod CSS.
+  # sepia(1) converts whites/greys to warm gold → saturate(5) punches to deep orange
+  # → hue-rotate(-10deg) nudges toward red → brightness(0.4) dims to dark room levels.
+  ambient-dim-filter: 'brightness(0.4) sepia(1) saturate(5) hue-rotate(-10deg)'
 
   modes:
     dark: {}
 
   # =========================
-  # HEADER (Top Bar)
+  # PAGE-LEVEL SURFACES
+  # (not inside ha-card, so not covered by ambient-dim-filter)
   # =========================
-  app-header-background-color: 'rgba(0, 0, 0, 0.01)'
-  app-header-text-color: 'rgba(200, 60, 60, 0.9)'
-  app-header-edit-background-color: 'rgba(20, 5, 5, 0.9)'
-  app-header-edit-text-color: 'rgba(200, 60, 60, 0.95)'
-  app-theme-color: 'rgb(0, 0, 0)'
-
-  # =========================
-  # SIDEBAR / DRAWER
-  # =========================
-  sidebar-background-color: 'rgba(10, 2, 2, 0.95)'
-  sidebar-icon-color: 'rgba(190, 50, 50, 0.6)'
-  sidebar-text-color: 'rgba(190, 50, 50, 0.8)'
-  sidebar-selected-icon-color: 'rgba(210, 70, 70, 0.95)'
-  sidebar-selected-text-color: 'rgba(210, 70, 70, 0.98)'
-
-  # =========================
-  # DIALOGS
-  # =========================
-  ha-dialog-surface-background: 'rgba(10, 2, 2, 0.97)'
-  dialog-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.6)'
-  paper-dialog-background-color: 'rgba(10, 2, 2, 0.97)'
-  mdc-dialog-scrim-color: 'rgba(0, 0, 0, 0.95)'
-
-  # =========================
-  # TYPOGRAPHY
-  # =========================
-  ha-font-family-body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  ha-font-family-heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  ha-font-family-code: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  ha-font-family-longform: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  ha-card-header-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  mdc-typography-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  mdc-typography-button-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  mdc-typography-body1-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  md-list-item-label-text-font: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  paper-font-common-base_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  paper-font-common-code_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  paper-font-body1_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  paper-font-subhead_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  paper-font-headline_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  paper-font-caption_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-  paper-font-title_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
-
-  ha-font-weight-normal: '400'
-  ha-font-weight-medium: '500'
-  ha-font-weight-bold: '700'
-  ha-font-weight-body: '400'
-  ha-font-weight-heading: '500'
-  ha-font-weight-action: '500'
-  mdc-typography-button-font-weight: '500'
-  title-font-weight: 'var(--token-weight-font-title-card)'
-
-  ha-font-size-xs: '10px'
-  ha-font-size-s: '12px'
-  ha-font-size-m: '14px'
-  ha-font-size-l: '15px'
-  ha-font-size-xl: '20px'
-  ha-font-size-2xl: '25px'
-  ha-font-size-3xl: '29px'
-  ha-font-size-4xl: '33px'
-  ha-font-size-5xl: '42px'
-  title-font-size: '20px'
-  ha-heading-card-title-font-size: 'var(--token-size-font-l)'
-  ha-heading-card-title-font-weight: '500'
-  ha-font-smoothing: 'antialiased'
-
-  # =========================
-  # COLORS & MISCELLANEOUS
-  # =========================
-  # Red-shifted primary palette (replaces blue/indigo scale)
-  ha-color-primary-05: '#0F0303'
-  ha-color-primary-10: '#1A0505'
-  ha-color-primary-20: '#350A0A'
-  ha-color-primary-30: '#5A1010'
-  ha-color-primary-40: '#8B1A1A'
-  ha-color-primary-50: '#C03030'
-  ha-color-primary-60: '#D05050'
-  ha-color-primary-70: '#DC7070'
-  ha-color-primary-80: '#EAA0A0'
-  ha-color-primary-90: '#F5D0D0'
-  ha-color-primary-95: '#FAE8E8'
-
-  color-primary-05: '#0F0303'
-  color-primary-10: '#1A0505'
-  color-primary-20: '#350A0A'
-  color-primary-30: '#5A1010'
-  color-primary-40: '#8B1A1A'
-  color-primary-50: '#C03030'
-  color-primary-60: '#D05050'
-  color-primary-70: '#DC7070'
-  color-primary-80: '#EAA0A0'
-  color-primary-90: '#F5D0D0'
-  color-primary-95: '#FAE8E8'
-
-  primary-text-color: 'rgba(210, 70, 70, 0.95)'
-  secondary-text-color: 'rgba(190, 55, 55, 0.75)'
-  text-primary-color: 'rgba(210, 70, 70, 0.95)'
-  disabled-text-color: 'rgba(190, 55, 55, 0.35)'
-  text-light-primary-color: 'rgb(210, 70, 70)'
-  paper-item-icon-color: 'rgba(200, 60, 60, 0.9)'
-  state-inactive-color: 'rgba(190, 55, 55, 0.75)'
-  state-icon-color: 'rgba(200, 60, 60, 0.9)'
-  state-on-color: 'rgb(200, 60, 60)'
-  state-off-color: 'rgba(160, 35, 35, 0.6)'
-  label-badge-text-color: 'rgba(210, 70, 70, 0.85)'
-  label-badge-red: 'rgb(200, 60, 60)'
-  label-badge-blue: 'rgb(160, 35, 35)'
-  label-badge-green: 'rgb(140, 30, 30)'
-  label-badge-yellow: 'rgb(180, 80, 30)'
-  label-badge-grey: 'rgb(80, 25, 25)'
-  ha-chip-text-color: 'rgb(210, 70, 70)'
-
-  primary-color: 'rgb(160, 35, 35)'
-  dark-primary-color: 'rgb(120, 25, 25)'
-  light-primary-color: 'rgb(190, 80, 80)'
-  accent-color: 'rgb(160, 35, 35)'
-  divider-color: 'rgba(160, 35, 35, 0.18)'
-  scrollbar-thumb-color: 'rgb(80, 20, 20)'
-  disabled-color: 'rgb(120, 50, 50)'
-  info-color: 'rgb(160, 35, 35)'
-  success-color: 'rgb(150, 40, 40)'
-  warning-color: 'rgb(180, 70, 30)'
-  error-color: 'rgb(200, 60, 60)'
-
-  # No background image — pure black avoids all blue/white light bleed
   background-image: 'none'
   lovelace-background: 'none'
   primary-background-color: 'rgb(0, 0, 0)'
-  secondary-background-color: 'rgba(15, 4, 4, 0.8)'
-  clear-background-color: 'rgba(15, 4, 4, 0.85)'
-  card-background-color: 'rgba(12, 3, 3, 0.97)'
-  ha-card-background: 'rgba(12, 3, 3, 0.97)'
+  secondary-background-color: 'rgba(5, 2, 2, 0.98)'
+  clear-background-color: 'rgba(5, 2, 2, 0.98)'
+
+  app-header-background-color: 'rgba(0, 0, 0, 0.01)'
+  app-header-text-color: 'rgba(160, 40, 40, 0.9)'
+  app-header-edit-background-color: 'rgba(10, 2, 2, 0.95)'
+  app-header-edit-text-color: 'rgba(160, 40, 40, 0.95)'
+  app-theme-color: 'rgb(0, 0, 0)'
+
+  sidebar-background-color: 'rgba(0, 0, 0, 0.98)'
+  sidebar-icon-color: 'rgba(140, 35, 35, 0.6)'
+  sidebar-text-color: 'rgba(140, 35, 35, 0.8)'
+  sidebar-selected-icon-color: 'rgba(160, 40, 40, 0.95)'
+  sidebar-selected-text-color: 'rgba(160, 40, 40, 0.98)'
+
+  ha-dialog-surface-background: 'rgba(8, 2, 2, 0.99)'
+  paper-dialog-background-color: 'rgba(8, 2, 2, 0.99)'
+  mdc-dialog-scrim-color: 'rgba(0, 0, 0, 0.97)'
+  dialog-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.8)'
+
+  # =========================
+  # CARD SURFACES
+  # =========================
+  card-background-color: 'rgba(8, 2, 2, 0.97)'
+  ha-card-background: 'rgba(8, 2, 2, 0.97)'
   ha-card-border-radius: '18px'
-  ha-card-border-color: 'rgba(160, 35, 35, 0.2)'
+  ha-card-border-color: 'rgba(80, 20, 20, 0.3)'
   ha-card-border-width: '0.5px'
   ha-card-border-style: 'solid'
-  ha-card-border: '0.5px solid rgba(160, 35, 35, 0.15)'
-  ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.6)'
+  ha-card-border: '0.5px solid rgba(80, 20, 20, 0.2)'
+  ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.8)'
   ha-view-sections-column-gap: '17px'
   ha-view-sections-column-min-width: 320px
 
-  # Sliders, toggles, switches
-  paper-slider-knob-color: 'rgb(160, 35, 35)'
-  paper-slider-knob-start-color: 'rgb(160, 35, 35)'
-  paper-slider-pin-color: 'rgb(160, 35, 35)'
-  paper-slider-active-color: 'rgb(160, 35, 35)'
-  paper-slider-secondary-color: 'rgb(120, 40, 40)'
-  switch-checked-button-color: 'rgb(160, 35, 35)'
-  switch-checked-track-color: 'rgb(160, 35, 35)'
-  switch-unchecked-button-color: 'rgba(190, 55, 55, 0.3)'
-  switch-unchecked-track-color: 'rgba(190, 55, 55, 0.18)'
-  paper-toggle-button-checked-button-color: 'rgb(160, 35, 35)'
-  paper-toggle-button-checked-bar-color: 'rgb(160, 35, 35)'
-  paper-toggle-button-unchecked-button-color: 'rgba(190, 55, 55, 0.3)'
-  paper-toggle-button-unchecked-bar-color: 'rgba(190, 55, 55, 0.18)'
-  mdc-checkbox-unchecked-color: 'rgba(20, 5, 5, 0.75)'
-  mdc-radio-unchecked-color: 'rgba(20, 5, 5, 0.75)'
-  mdc-ripple-hover-opacity: '0.1'
-
-  # Inputs
-  input-background-color: 'rgba(30, 8, 8, 0.3)'
-  input-background-token-color-disabled: 'rgba(30, 8, 8, 0.2)'
-  input-fill-color: 'rgba(30, 8, 8, 0.3)'
-  input-ink-color: 'rgba(210, 70, 70, 0.95)'
-  input-label-ink-color: 'rgba(210, 70, 70, 0.95)'
-  input-disabled-fill-color: 'rgba(20, 5, 5, 0.5)'
-  input-disabled-ink-color: 'rgba(190, 55, 55, 0.35)'
-  input-disabled-label-ink-color: 'rgba(190, 55, 55, 0.35)'
-  input-idle-line-color: 'transparent'
-  input-dropdown-icon-color: 'rgba(190, 55, 55, 0.8)'
-  input-hover-line-color: 'rgb(160, 35, 35)'
-  mdc-select-idle-line-color: 'transparent'
-  mdc-text-field-idle-line-color: 'transparent'
-
-  # Code Editor & Misc
-  code-editor-background-color: 'rgba(10, 3, 3, 1)'
-  codemirror-meta: 'rgba(210, 70, 70, 0.95)'
-  codemirror-property: 'rgb(160, 35, 35)'
-  codemirror-atom: 'rgb(160, 35, 35)'
-  codemirror-string: 'rgb(220, 120, 120)'
-  codemirror-keyword: 'rgb(200, 80, 80)'
-  codemirror-number: 'rgb(180, 70, 30)'
-  # Clock card digit colour — deep red for dark room mode
-  clock-digit-color: 'rgba(200, 60, 60, 0.9)'
-
+  # =========================
+  # MISC SIZES (kept in sync with base)
+  # =========================
+  border-radius: '18px'
+  paper-slider-height: '5px'
   mcg-title-font-weight: '400'
   mush-title-font-weight: '500'
   mush-title-font-size: 'var(--token-size-font-2xl)'
-  light-grey-color: 'rgb(100, 30, 30)'
-  mush-rgb-grey: '100, 30, 30'
 
-  # Misc sizes
-  paper-slider-height: '5px'
-  border-radius: '18px'
+  # Clock card digit colour — referenced by clock card_mod as var(--clock-digit-color)
+  # The filter already red-shifts most content, but the clock hardcodes color: white
+  # in its own card_mod, so this explicit variable is still needed for it.
+  clock-digit-color: 'rgba(200, 60, 60, 0.9)'
 
 
   # --- End of Theme ---
