@@ -40,6 +40,8 @@ Frosted Glass Dark Lite:
     /* Base reset */
     ha-card {
       background: transparent;
+      filter: sepia(var(--ambient-sepia, 0)) saturate(var(--ambient-saturation, 1));
+      transition: filter 0.4s ease-out;
     }
 
     /* Glass layer (variable-driven, matches Light) */
