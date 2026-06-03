@@ -195,6 +195,9 @@ Frosted Glass Dark Lite Dim:
   codemirror-string: 'rgb(164, 209, 255)'
   codemirror-keyword: 'rgb(148, 182, 255)'
   codemirror-number: 'rgb(255, 171, 64)'
+  # Clock card digit colour — dimmed white for night mode
+  clock-digit-color: 'rgba(234, 235, 238, 0.75)'
+
   mcg-title-font-weight: '400'
   mush-title-font-weight: '500'
   mush-title-font-size: 'var(--token-size-font-2xl)'

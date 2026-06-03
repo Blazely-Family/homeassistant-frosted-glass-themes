@@ -202,6 +202,9 @@ Frosted Glass Dark Lite Dark Room:
   codemirror-string: 'rgb(220, 120, 120)'
   codemirror-keyword: 'rgb(200, 80, 80)'
   codemirror-number: 'rgb(180, 70, 30)'
+  # Clock card digit colour — deep red for dark room mode
+  clock-digit-color: 'rgba(200, 60, 60, 0.9)'
+
   mcg-title-font-weight: '400'
   mush-title-font-weight: '500'
   mush-title-font-size: 'var(--token-size-font-2xl)'

@@ -458,6 +458,9 @@ Frosted Glass Dark Lite:
   codemirror-string: 'rgb(164, 209, 255)'
   codemirror-keyword: 'rgb(148, 182, 255)'
   codemirror-number: 'rgb(255, 171, 64)'
+  # Clock card digit colour — reference as var(--clock-digit-color) in card_mod
+  clock-digit-color: 'rgba(240, 243, 255, 0.95)'
+
   mcg-title-font-weight: '400'
   mush-title-font-weight: '500'
   mush-title-font-size: 'var(--token-size-font-2xl)'
