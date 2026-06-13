@@ -508,10 +508,64 @@ Frosted Glass Dark Lite:
   #         :host {
   #           --player-blur-color: rgba(30, 30, 30, 0.05) !important;
   #         }
-  #       "ha-card $ mpc-music-player-card $ mpc-volume-row $": |
+  #         #navbar:not(.expressive) {
+  #           left: 0.75em;
+  #           right: 0.75em;
+  #           bottom: 0.5em;
+  #           width: auto;
+  #           border-radius: 12px;
+  #           overflow: hidden;
+  #         }
+  #       "mpc-music-player-card $ mpc-player-controls $": |
+  #         .controls-div {
+  #           background: rgba(234, 235, 238, 0.08);
+  #           border-radius: 2em;
+  #           gap: 0;
+  #           padding: 0;
+  #         }
+  #         .controls-div ha-button::part(base) {
+  #           background-color: transparent !important;
+  #         }
+  #         .shuffle ha-button::part(base) {
+  #           border-radius: 2em 0 0 2em;
+  #         }
+  #         .track-previous ha-button::part(base),
+  #         .play ha-button::part(base),
+  #         .track-next ha-button::part(base) {
+  #           border-radius: 0;
+  #         }
+  #         .repeat ha-button::part(base) {
+  #           border-radius: 0 2em 2em 0;
+  #         }
+  #         .track-previous.div,
+  #         .play.div,
+  #         .track-next.div,
+  #         .repeat.div {
+  #           border-left: 1px solid rgba(234, 235, 238, 0.15);
+  #         }
+  #         .svg.medium {
+  #           height: 2.5em;
+  #           width: 2.5em;
+  #         }
+  #       "mpc-music-player-card $ mpc-volume-row $": |
   #         #volume {
   #           padding-left: 0.75em;
   #           padding-right: 0.75em;
+  #         }
+  #       "mpc-music-player-card $ mpc-volume-row $ mpc-volume-slider $": |
+  #         ha-control-slider {
+  #           --control-slider-color: rgba(234, 235, 238, 0.75) !important;
+  #           --control-slider-background-color: rgba(234, 235, 238, 0.15) !important;
+  #         }
+  #       "mpc-music-player-card $ mpc-progress-bar $": |
+  #         #progress-bar {
+  #           --primary: rgba(234, 235, 238, 0.90) !important;
+  #         }
+  #         #progress-handle {
+  #           background-color: rgba(234, 235, 238, 0.90) !important;
+  #         }
+  #         .prog-incomplete {
+  #           background-color: rgba(234, 235, 238, 0.15) !important;
   #         }
   # ─────────────────────────────────────────────────────────────────────────
 
