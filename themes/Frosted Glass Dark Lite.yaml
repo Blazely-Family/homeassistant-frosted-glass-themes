@@ -501,6 +501,18 @@ Frosted Glass Dark Lite:
   #       icons:
   #         play_pause:
   #           box_shadow: false
+  #   card_mod:
+  #     style:
+  #       .: |
+  #         ha-card { overflow: hidden; }
+  #         :host {
+  #           --player-blur-color: rgba(30, 30, 30, 0.05) !important;
+  #         }
+  #       "ha-card $ mpc-music-player-card $ mpc-volume-row $": |
+  #         #volume {
+  #           padding-left: 0.75em;
+  #           padding-right: 0.75em;
+  #         }
   # ─────────────────────────────────────────────────────────────────────────
 
   # Geometry — match the 18px glass border radius
