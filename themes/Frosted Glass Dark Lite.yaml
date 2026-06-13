@@ -482,4 +482,82 @@ Frosted Glass Dark Lite:
   border-radius: '18px'
 
 
+  # ─────────────────────────────────────────────────────────────────────────
+  # mass-player-card overrides
+  #
+  # These variables map the frosted glass palette onto the card's theme engine.
+  # They take effect when mass-player-card is used with expressive: false.
+  #
+  # Recommended card config (in your Lovelace card YAML):
+  #
+  #   type: custom:mass-player-card
+  #   entities:
+  #     - media_player.your_player
+  #   expressive: false
+  #   player:
+  #     layout:
+  #       controls_layout: spaced
+  #       hide_labels: true
+  #       icons:
+  #         play_pause:
+  #           box_shadow: false
+  # ─────────────────────────────────────────────────────────────────────────
+
+  # Geometry — match the 18px glass border radius
+  mass-player-card-default-border-radius: '18px'
+  mass-player-card-players-border-radius: '14px'
+  mass-player-card-queue-border-radius: '14px'
+  mass-player-card-media-row-border-radius: '10px'
+  mass-player-card-player-row-border-radius: '10px'
+  mass-player-card-browser-card-border-radius: '14px'
+  mass-player-card-media-row-thumbnail-border-radius: '8px'
+
+  # Player overlay gradient — use the dark glass tint instead of the card background
+  # The card formula is: rgba(from <this-value> r g b / 0.6)
+  # Using rgb(28,29,33) produces a near-black glass overlay at 60% opacity
+  mass-player-card-player-blur-color: 'rgb(28, 29, 33)'
+
+  # Text colours
+  mass-player-card-player-name-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-control-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-search-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-search-placeholder-text-color: 'rgba(234, 235, 238, 0.45)'
+
+  # Icon colours — all buttons use the frosted glass icon primary scale
+  mass-player-card-player-control-icon-color: 'rgba(234, 235, 238, 0.95)'
+
+  # Play / pause
+  mass-player-card-player-button-play-pause-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-play-pause-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-player-button-play-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-play-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-player-button-pause-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-pause-text-color: 'rgba(234, 235, 238, 0.98)'
+
+  # Previous / next
+  mass-player-card-player-button-previous-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-previous-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-next-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-next-text-color: 'rgba(234, 235, 238, 0.8)'
+
+  # Shuffle / repeat
+  mass-player-card-player-button-shuffle-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-shuffle-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-repeat-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-repeat-text-color: 'rgba(234, 235, 238, 0.8)'
+
+  # Power / favorite / mute
+  mass-player-card-player-button-power-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-power-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-favorite-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-favorite-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-mute-icon-color: 'rgba(234, 235, 238, 0.75)'
+
+  # Audio bars — use the indigo-purple accent colour
+  mass-player-card-audio-bars-color: 'rgb(106, 116, 211)'
+
+  # Media browser enqueue menu icons
+  mass-player-card-browser-enqueue-menu-icon-primary-color: 'rgb(106, 116, 211)'
+  mass-player-card-browser-enqueue-menu-icon-secondary-color: 'rgba(30, 30, 30, 0.9)'
+
   # --- End of Theme ---
