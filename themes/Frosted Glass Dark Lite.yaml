@@ -127,8 +127,9 @@ Frosted Glass Dark Lite:
     /* (Removed) .bubble-button-card-container styling to avoid conflicts               # 1.2 Glass – matches Light exclusions */
 
     /* === Active state indicator === */
-    {% set _d = config.entity.split('.')[0] if config.entity else '' %}
-    {% set _s = states[config.entity].state if config.entity else '' %}
+    {% set _entity = config.entity if config.entity is defined else '' %}
+    {% set _d = _entity.split('.')[0] if _entity else '' %}
+    {% set _s = states[_entity].state if _entity else '' %}
     {% set _active_map = {
       'light':               ['on'],
       'switch':              ['on'],
