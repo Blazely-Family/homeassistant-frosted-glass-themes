@@ -4,6 +4,12 @@
 Frosted Glass Dark Lite:
   card-mod-theme: 'Frosted Glass Dark Lite'
 
+  card-mod-view-yaml: |
+    "hui-sections-view $": |
+      .container {
+        padding-top: 12px !important;
+      }
+
   modes:                         # 1.2.1 - change add modes: dark-only declaration
     dark: {}
 
