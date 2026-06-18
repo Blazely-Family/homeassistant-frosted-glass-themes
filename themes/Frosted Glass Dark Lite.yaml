@@ -48,7 +48,6 @@ Frosted Glass Dark Lite:
       background: transparent;
       filter: sepia(var(--ambient-sepia, 0)) saturate(var(--ambient-saturation, 1));
       transition: filter 0.4s ease-out;
-      --control-button-background-color: var(--md-sys-color-secondary-container);
     }
 
     /* Glass layer (variable-driven, matches Light) */
@@ -410,7 +409,7 @@ Frosted Glass Dark Lite:
   accent-color: 'rgb(106, 116, 211)'
   divider-color: 'rgba(84, 84, 98, 0.28)'
   scrollbar-thumb-color: 'rgb(68, 68, 88)'
-  disabled-color: 'rgb(173, 176, 184)'
+  disabled-color: 'var(--md-sys-color-secondary-container)'
   info-color: 'rgb(106, 116, 211)'
   success-color: 'rgb(118, 214, 152)'
   warning-color: 'rgb(255, 219, 117)'
