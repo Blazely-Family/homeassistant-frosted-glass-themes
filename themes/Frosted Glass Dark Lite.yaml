@@ -48,6 +48,7 @@ Frosted Glass Dark Lite:
       background: transparent;
       filter: sepia(var(--ambient-sepia, 0)) saturate(var(--ambient-saturation, 1));
       transition: filter 0.4s ease-out;
+      --control-button-background-color: var(--md-sys-color-secondary-container);
     }
 
     /* Glass layer (variable-driven, matches Light) */
@@ -174,11 +175,10 @@ Frosted Glass Dark Lite:
     }
     {% endif %}
 
-    /* Tile card feature toggle icons: dark icon for visibility on light-grey inactive button.
-       Scoped via ha-tile-container (only hui-tile-card uses it) so ha-control-select
-       option icons in thermostat/other cards are NOT affected. */
+    /* Tile card feature toggle icons: match secondary-container token so icons
+       are legible on the off-state button background. */
     ha-tile-container hui-card-features {
-      --icon-primary-color: rgba(0, 0, 0, 0.85);
+      --icon-primary-color: var(--md-sys-color-on-secondary-container);
     }
 
   # =========================
