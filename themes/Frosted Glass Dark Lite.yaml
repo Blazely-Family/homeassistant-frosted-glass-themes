@@ -42,146 +42,162 @@ Frosted Glass Dark Lite:
   # =========================
   # CARDS / CARD-MOD
   # =========================
-  card-mod-card: |
-    /* Base reset */
-    ha-card {
-      background: transparent;
-      filter: sepia(var(--ambient-sepia, 0)) saturate(var(--ambient-saturation, 1));
-      transition: filter 0.4s ease-out;
-      --control-button-background-color: var(--md-sys-color-secondary-container);
-    }
+  card-mod-card-yaml: |
+    .: |
+      /* Base reset */
+      ha-card {
+        background: transparent;
+        filter: sepia(var(--ambient-sepia, 0)) saturate(var(--ambient-saturation, 1));
+        transition: filter 0.4s ease-out;
+      }
 
-    /* Glass layer (variable-driven, matches Light) */
-    ha-card::before {                                                                   /* 1.2 Glass – glass overlay */
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--ha-card-glass-tint, rgba(28, 29, 33, 0.18));                    /* 1.2 Glass – subtle dark tint */
-      z-index: -1;
-      pointer-events: none;
-      border-radius: inherit;
-      box-shadow: var(--ha-card-glass-inset-shadow,                                     /* 1.2 Glass – inner bevel/glow */
-        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.22) inset,
-        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.18) inset,
-        0 0 8px 1px rgba(255, 255, 255, 0.06) inset,
-        0 0 2px 0 rgba(0, 0, 0, 0.18)
-      );
-    }
+      /* Glass layer (variable-driven, matches Light) */
+      ha-card::before {                                                                   /* 1.2 Glass – glass overlay */
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--ha-card-glass-tint, rgba(28, 29, 33, 0.18));                    /* 1.2 Glass – subtle dark tint */
+        z-index: -1;
+        pointer-events: none;
+        border-radius: inherit;
+        box-shadow: var(--ha-card-glass-inset-shadow,                                     /* 1.2 Glass – inner bevel/glow */
+          3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.22) inset,
+          -2px -2px 0.5px -2px rgba(255, 255, 255, 0.18) inset,
+          0 0 8px 1px rgba(255, 255, 255, 0.06) inset,
+          0 0 2px 0 rgba(0, 0, 0, 0.18)
+        );
+      }
 
-    /* Headings + Glance (kept excluded) */
-    :host(hui-heading-card) ha-card,
-    :host(hui-glance-card) ha-card {
-      background: none !important;
-    }
-    :host(hui-heading-card) ha-card::before,
-    :host(hui-glance-card) ha-card::before {
-      content: none !important;
-    }
+      /* Headings + Glance (kept excluded) */
+      :host(hui-heading-card) ha-card,
+      :host(hui-glance-card) ha-card {
+        background: none !important;
+      }
+      :host(hui-heading-card) ha-card::before,
+      :host(hui-glance-card) ha-card::before {
+        content: none !important;
+      }
 
-    /* IMPORTANT: Allow normal Markdown to be glassy; only exclude text-only */
-    /* (Fix) Removed global :host(hui-markdown-card) exclusion so standard Markdown gets glass. */
+      /* IMPORTANT: Allow normal Markdown to be glassy; only exclude text-only */
+      /* (Fix) Removed global :host(hui-markdown-card) exclusion so standard Markdown gets glass. */
 
-    /* Data tables */
-    .mdc-data-table {
-      background: none !important;
-    }
-    .mdc-data-table__header-cell {
-      background: rgba(30, 33, 54, 0.18) !important;
-      box-shadow: var(--ha-card-glass-inset-shadow) !important;                         /* 1.2 Glass – consistent bevel */
-    }
+      /* Data tables */
+      .mdc-data-table {
+        background: none !important;
+      }
+      .mdc-data-table__header-cell {
+        background: rgba(30, 33, 54, 0.18) !important;
+        box-shadow: var(--ha-card-glass-inset-shadow) !important;                         /* 1.2 Glass – consistent bevel */
+      }
 
-    /* Markdown card with text_only → no background or blur */                          # 1.1.9 Change - text only markdown and mushroom title card no background // Beginning
-    :host(.text-only) ha-card,
-    :host(.text-only) ha-card::before,
-    ha-card.text-only,
-    ha-card.text-only::before {                                                         /* 1.2 Glass – add ha-card.text-only for compatibility */
-      background: none !important;
-      box-shadow: none !important;
-      content: none !important;
-    }
+      /* Markdown card with text_only → no background or blur */                          # 1.1.9 Change - text only markdown and mushroom title card no background // Beginning
+      :host(.text-only) ha-card,
+      :host(.text-only) ha-card::before,
+      ha-card.text-only,
+      ha-card.text-only::before {                                                         /* 1.2 Glass – add ha-card.text-only for compatibility */
+        background: none !important;
+        box-shadow: none !important;
+        content: none !important;
+      }
 
-    /* Mushroom title card (no background or blur) */
-    :host(mushroom-title-card) ha-card {
-      background: none !important;
+      /* Mushroom title card (no background or blur) */
+      :host(mushroom-title-card) ha-card {
+        background: none !important;
 
-      box-shadow: none !important;                                                      /* 1.2 Glass – ensure no bevel */
-    }
-    :host(mushroom-title-card) ha-card::before {
-      content: none !important;
-    }
+        box-shadow: none !important;                                                      /* 1.2 Glass – ensure no bevel */
+      }
+      :host(mushroom-title-card) ha-card::before {
+        content: none !important;
+      }
 
-    /* === Prevent frosted/glass from applying to bubble cards ===                      # 1.1.9 Change - Bubble cards are no longer applied */
-    :host(.type-custom-bubble-card) ha-card {
-      background: none !important;
-      box-shadow: none !important;
-      border-radius: 0px !important;
-    }
-    :host(.type-custom-bubble-card) ha-card::before {
-      content: none !important;
-      background: none !important;
-    }
+      /* === Prevent frosted/glass from applying to bubble cards ===                      # 1.1.9 Change - Bubble cards are no longer applied */
+      :host(.type-custom-bubble-card) ha-card {
+        background: none !important;
+        box-shadow: none !important;
+        border-radius: 0px !important;
+      }
+      :host(.type-custom-bubble-card) ha-card::before {
+        content: none !important;
+        background: none !important;
+      }
 
-    /* === Prevent frosted/glass on mushroom-chips-card outer container ===             # 1.1.9 Change - Outer mushroom chips no longer applied */
-    :host(mushroom-chips-card) ha-card {
-      background: none !important;
-      box-shadow: none !important;
-    }
-    :host(mushroom-chips-card) ha-card::before {
-      content: none !important;
-      background: none !important;
-    }
+      /* === Prevent frosted/glass on mushroom-chips-card outer container ===             # 1.1.9 Change - Outer mushroom chips no longer applied */
+      :host(mushroom-chips-card) ha-card {
+        background: none !important;
+        box-shadow: none !important;
+      }
+      :host(mushroom-chips-card) ha-card::before {
+        content: none !important;
+        background: none !important;
+      }
 
-    /* (Removed) .bubble-button-card-container styling to avoid conflicts               # 1.2 Glass – matches Light exclusions */
+      /* (Removed) .bubble-button-card-container styling to avoid conflicts               # 1.2 Glass – matches Light exclusions */
 
-    /* === Active state indicator === */
-    {% set _entity = config.entity if config.entity is defined else '' %}
-    {% set _d = _entity.split('.')[0] if _entity else '' %}
-    {% set _s = states[_entity].state if _entity else '' %}
-    {% set _active_map = {
-      'light':               ['on'],
-      'switch':              ['on'],
-      'fan':                 ['on'],
-      'input_boolean':       ['on'],
-      'binary_sensor':       ['on'],
-      'automation':          ['on'],
-      'script':              ['on'],
-      'humidifier':          ['on'],
-      'cover':               ['open', 'opening', 'closing'],
-      'climate':             ['heat', 'cool', 'heat_cool', 'fan_only', 'dry', 'auto'],
-      'alarm_control_panel': ['armed_home', 'armed_away', 'armed_night', 'armed_vacation', 'armed_custom_bypass', 'arming', 'disarming', 'triggered', 'pending'],
-      'lock':                ['unlocked', 'locking', 'unlocking'],
-      'media_player':        ['playing', 'paused', 'buffering'],
-      'vacuum':              ['cleaning', 'returning'],
-      'person':              ['not_home'],
-      'device_tracker':      ['not_home'],
-    } %}
-    {% set _motion_map = {
-      'cover': ['opening', 'closing'],
-      'lock':  ['locking', 'unlocking'],
-    } %}
-    {% set _active = _d in _active_map and _s in _active_map[_d] %}
-    {% set _motion = _d in _motion_map and _s in _motion_map[_d] %}
-    @keyframes active-border-pulse {
-      0%, 100% { box-shadow: var(--ha-card-box-shadow), 0 0 14px 4px rgba(255, 158, 0, 0.35); }
-      50%       { box-shadow: var(--ha-card-box-shadow), 0 0 6px 1px rgba(255, 158, 0, 0.10); }
-    }
-    {% if _active %}
-    ha-card {
-      --ha-card-border-color: rgba(255, 158, 0, 0.7);
-      --ha-card-border-width: 2px;
-      --ha-card-glass-tint: rgba(255, 140, 0, 0.08);
-      box-shadow: var(--ha-card-box-shadow), 0 0 10px 3px rgba(255, 158, 0, 0.22);
-      {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
-    }
-    {% endif %}
+      /* === Active state indicator === */
+      {% set _entity = config.entity if config.entity is defined else '' %}
+      {% set _d = _entity.split('.')[0] if _entity else '' %}
+      {% set _s = states[_entity].state if _entity else '' %}
+      {% set _active_map = {
+        'light':               ['on'],
+        'switch':              ['on'],
+        'fan':                 ['on'],
+        'input_boolean':       ['on'],
+        'binary_sensor':       ['on'],
+        'automation':          ['on'],
+        'script':              ['on'],
+        'humidifier':          ['on'],
+        'cover':               ['open', 'opening', 'closing'],
+        'climate':             ['heat', 'cool', 'heat_cool', 'fan_only', 'dry', 'auto'],
+        'alarm_control_panel': ['armed_home', 'armed_away', 'armed_night', 'armed_vacation', 'armed_custom_bypass', 'arming', 'disarming', 'triggered', 'pending'],
+        'lock':                ['unlocked', 'locking', 'unlocking'],
+        'media_player':        ['playing', 'paused', 'buffering'],
+        'vacuum':              ['cleaning', 'returning'],
+        'person':              ['not_home'],
+        'device_tracker':      ['not_home'],
+      } %}
+      {% set _motion_map = {
+        'cover': ['opening', 'closing'],
+        'lock':  ['locking', 'unlocking'],
+      } %}
+      {% set _active = _d in _active_map and _s in _active_map[_d] %}
+      {% set _motion = _d in _motion_map and _s in _motion_map[_d] %}
+      @keyframes active-border-pulse {
+        0%, 100% { box-shadow: var(--ha-card-box-shadow), 0 0 14px 4px rgba(255, 158, 0, 0.35); }
+        50%       { box-shadow: var(--ha-card-box-shadow), 0 0 6px 1px rgba(255, 158, 0, 0.10); }
+      }
+      {% if _active %}
+      ha-card {
+        --ha-card-border-color: rgba(255, 158, 0, 0.7);
+        --ha-card-border-width: 2px;
+        --ha-card-glass-tint: rgba(255, 140, 0, 0.08);
+        box-shadow: var(--ha-card-box-shadow), 0 0 10px 3px rgba(255, 158, 0, 0.22);
+        {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
+      }
+      {% endif %}
 
-    /* Tile card feature toggle icons: match secondary-container token so icons
-       are legible on the off-state button background. */
-    ha-tile-container hui-card-features {
-      --icon-primary-color: var(--md-sys-color-on-secondary-container);
-    }
+      /* Tile card feature toggle icons: match secondary-container token so icons
+         are legible on the off-state button background. */
+      ha-tile-container hui-card-features {
+        --icon-primary-color: var(--md-sys-color-on-secondary-container);
+      }
 
-  # =========================
+    # Shadow DOM injection: override off-state colours for tile card controls
+    "hui-card-features $ hui-toggle-card-feature $ ha-control-switch $": |
+      :host {
+        --control-switch-off-color: var(--md-sys-color-secondary-container);
+      }
+    "hui-card-features $ hui-toggle-card-feature $ ha-control-button $": |
+      :host {
+        --control-button-background-color: var(--md-sys-color-secondary-container);
+        --control-button-background-opacity: 0.85;
+      }
+    "hui-card-features $ hui-climate-hvac-modes-card-feature $ ha-control-button $": |
+      :host {
+        --control-button-background-color: var(--md-sys-color-secondary-container);
+        --control-button-background-opacity: 0.85;
+      }
+
+    # =========================
   # CARD-MOD-ROOT GLOBAL CSS
   # =========================
   card-mod-root: |
