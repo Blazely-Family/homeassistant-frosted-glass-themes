@@ -147,11 +147,7 @@ Frosted Glass Dark Lite:
 
       /* (Removed) .bubble-button-card-container styling to avoid conflicts               # 1.2 Glass – matches Light exclusions */
 
-      /* === Advanced Camera Card: inset video 2px so glass bevel has room to render === */
-      :host(.type-custom-advanced-camera-card) ha-card {
-        padding: 2px;
-        overflow: hidden;
-      }
+      /* === Advanced Camera Card: glass border overlay above video === */
       :host(.type-custom-advanced-camera-card) ha-card::after {
         border: 1px solid rgba(255, 255, 255, 0.25);
       }
