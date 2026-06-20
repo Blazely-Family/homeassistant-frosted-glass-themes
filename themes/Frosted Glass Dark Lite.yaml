@@ -197,8 +197,8 @@ Frosted Glass Dark Lite:
       }
       {% else %}
       ha-card {
-        --tile-color: rgba(234, 235, 238, 0.14);
-        --control-switch-off-color: rgba(234, 235, 238, 0.14);
+        --tile-color: rgba(234, 235, 238, 0.5);
+        --control-switch-off-color: rgba(234, 235, 238, 0.5);
       }
       {% endif %}
 
