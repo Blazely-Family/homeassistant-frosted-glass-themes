@@ -220,9 +220,9 @@ Frosted Glass Dark Lite:
         --control-button-background-color: var(--md-sys-color-secondary-container);
         --control-button-background-opacity: 0.85;
       }
-    "hui-card-features $ hui-toggle-card-feature $ ha-control-switch $": |
-      .button {
-        background-color: {% if _active %}var(--feature-color){% else %}rgba(234, 235, 238, 0.25){% endif %} !important;
+    "hui-card-features $ hui-toggle-card-feature $": |
+      ha-control-switch {
+        --control-switch-off-color: {% if _active %}var(--feature-color){% else %}rgba(234, 235, 238, 0.25){% endif %} !important;
       }
     "hui-card-features $ hui-climate-hvac-modes-card-feature $ ha-control-button $": |
       :host {
