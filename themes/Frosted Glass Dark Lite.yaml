@@ -191,7 +191,7 @@ Frosted Glass Dark Lite:
       {% if _active %}
       ha-card {
         --ha-card-border-color: rgba(255, 158, 0, 0.0);
-        --ha-card-border-width: 0px;
+        --ha-card-border-width: 0.5px;
         --ha-card-glass-tint: rgba(255, 140, 0, 0.10);
         --ha-card-glass-inset-shadow:
           3px 3px 0.5px -3.5px rgba(255, 200, 30, 0.65) inset,
