@@ -226,6 +226,10 @@ Frosted Glass Dark Lite:
         --control-button-background-color: var(--md-sys-color-secondary-container);
         --control-button-background-opacity: 0.85;
       }
+    "hui-card-features $ hui-card-feature $ hui-toggle-card-feature $ ha-control-switch $": |
+      div#switch div.button {
+        background-color: {% if _active %}var(--feature-color){% else %}rgba(234, 235, 238, 0.25){% endif %} !important;
+      }
 
     # =========================
   # CARD-MOD-ROOT GLOBAL CSS
