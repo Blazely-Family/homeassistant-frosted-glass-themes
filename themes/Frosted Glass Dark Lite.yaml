@@ -167,6 +167,7 @@ Frosted Glass Dark Lite:
       }
       {% if _active %}
       ha-card {
+        --ha-card-border-color: rgba(255, 158, 0, 0.7);
         --ha-card-border-width: 0px;
         --ha-card-glass-tint: rgba(255, 140, 0, 0.08);
         --ha-card-glass-inset-shadow:
@@ -176,9 +177,6 @@ Frosted Glass Dark Lite:
           0 0 2px 0 rgba(180, 80, 0, 0.18);
         box-shadow: var(--ha-card-box-shadow), 0 0 10px 3px rgba(255, 158, 0, 0.22);
         {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
-      }
-      ha-card::before {
-        border: 1px solid rgba(255, 160, 30, 0.3);
       }
       {% endif %}
 
