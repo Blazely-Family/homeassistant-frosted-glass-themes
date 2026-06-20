@@ -190,15 +190,13 @@ Frosted Glass Dark Lite:
       }
       {% if _active %}
       ha-card {
-        --ha-card-border-color: rgba(255, 158, 0, 0.0);
-        --ha-card-border-width: 0.5px;
         --ha-card-glass-tint: rgba(255, 140, 0, 0.10);
         --ha-card-glass-inset-shadow:
           3px 3px 0.5px -3.5px rgba(255, 200, 30, 0.65) inset,
           -2px -2px 0.5px -2px rgba(255, 200, 30, 0.43) inset,
           0 0 6px 1px rgba(255, 160, 30, 0.50) inset,
           0 0 2px 0 rgba(255, 200, 0, 0.50);
-        box-shadow: var(--ha-card-box-shadow), 0 0 0 1px rgba(255, 180, 30, 0.35), 0 0 8px 1px rgba(255, 158, 0, 0.18);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(255, 180, 30, 0.35), 0 0 8px 1px rgba(255, 158, 0, 0.18);
         {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
       }
       {% endif %}
@@ -231,9 +229,9 @@ Frosted Glass Dark Lite:
   card-mod-root: |
     :host {
       --ha-card-background: rgba(30, 30, 30, 0.3);
-      --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28);
-      --ha-card-border-width: 0.5px;
-      --ha-card-border-color: rgba(234, 235, 238, 0.25);
+      --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28), 0 0 0 0.5px rgba(234, 235, 238, 0.25);
+      --ha-card-border-width: 0px;
+      --ha-card-border-color: transparent;
 
       /* Glass system tokens (new, dark-tuned) */
       --ha-card-glass-tint: rgba(28, 29, 33, 0.54);                                      # 1.2 Glass – global tint layer
