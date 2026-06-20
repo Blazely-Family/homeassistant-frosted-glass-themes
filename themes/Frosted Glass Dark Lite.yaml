@@ -201,6 +201,8 @@ Frosted Glass Dark Lite:
       }
       hui-card-features {
         --state-climate-off-color: rgba(234, 235, 238, 0.25);
+        --state-light-off-color: rgba(234, 235, 238, 0.25);
+        --state-switch-off-color: rgba(234, 235, 238, 0.25);
       }
       {% endif %}
 
