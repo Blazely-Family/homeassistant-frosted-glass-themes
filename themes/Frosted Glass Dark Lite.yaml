@@ -52,15 +52,24 @@ Frosted Glass Dark Lite:
       }
 
       /* Glass layer (variable-driven, matches Light) */
-      ha-card::before {                                                                   /* 1.2 Glass – glass overlay */
+      ha-card::before {                                                                   /* 1.2 Glass – blur + tint */
         content: '';
         position: absolute;
         inset: 0;
-        background: var(--ha-card-glass-tint, rgba(28, 29, 33, 0.54));                    /* 1.2 Glass – subtle dark tint */
+        background: var(--ha-card-glass-tint, rgba(28, 29, 33, 0.54));
         z-index: -1;
         pointer-events: none;
         border-radius: inherit;
-        box-shadow: var(--ha-card-glass-inset-shadow,                                     /* 1.2 Glass – inner bevel/glow */
+      }
+
+      ha-card::after {                                                                    /* 1.2 Glass – bevel/glow overlay (above video content) */
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        border-radius: inherit;
+        box-shadow: var(--ha-card-glass-inset-shadow,                                    /* 1.2 Glass – inner bevel/glow */
           3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.55) inset,
           -2px -2px 0.5px -2px rgba(255, 255, 255, 0.38) inset,
           0 0 8px 1px rgba(255, 255, 255, 0.15) inset,
@@ -74,7 +83,9 @@ Frosted Glass Dark Lite:
         background: none !important;
       }
       :host(hui-heading-card) ha-card::before,
-      :host(hui-glance-card) ha-card::before {
+      :host(hui-heading-card) ha-card::after,
+      :host(hui-glance-card) ha-card::before,
+      :host(hui-glance-card) ha-card::after {
         content: none !important;
       }
 
@@ -90,11 +101,12 @@ Frosted Glass Dark Lite:
         box-shadow: var(--ha-card-glass-inset-shadow) !important;                         /* 1.2 Glass – consistent bevel */
       }
 
-      /* Markdown card with text_only → no background or blur */                          # 1.1.9 Change - text only markdown and mushroom title card no background // Beginning
       :host(.text-only) ha-card,
       :host(.text-only) ha-card::before,
+      :host(.text-only) ha-card::after,
       ha-card.text-only,
-      ha-card.text-only::before {                                                         /* 1.2 Glass – add ha-card.text-only for compatibility */
+      ha-card.text-only::before,
+      ha-card.text-only::after {
         background: none !important;
         box-shadow: none !important;
         content: none !important;
@@ -103,30 +115,32 @@ Frosted Glass Dark Lite:
       /* Mushroom title card (no background or blur) */
       :host(mushroom-title-card) ha-card {
         background: none !important;
-
-        box-shadow: none !important;                                                      /* 1.2 Glass – ensure no bevel */
+        box-shadow: none !important;
       }
-      :host(mushroom-title-card) ha-card::before {
+      :host(mushroom-title-card) ha-card::before,
+      :host(mushroom-title-card) ha-card::after {
         content: none !important;
       }
 
-      /* === Prevent frosted/glass from applying to bubble cards ===                      # 1.1.9 Change - Bubble cards are no longer applied */
+      /* === Prevent frosted/glass from applying to bubble cards === */
       :host(.type-custom-bubble-card) ha-card {
         background: none !important;
         box-shadow: none !important;
         border-radius: 0px !important;
       }
-      :host(.type-custom-bubble-card) ha-card::before {
+      :host(.type-custom-bubble-card) ha-card::before,
+      :host(.type-custom-bubble-card) ha-card::after {
         content: none !important;
         background: none !important;
       }
 
-      /* === Prevent frosted/glass on mushroom-chips-card outer container ===             # 1.1.9 Change - Outer mushroom chips no longer applied */
+      /* === Prevent frosted/glass on mushroom-chips-card outer container === */
       :host(mushroom-chips-card) ha-card {
         background: none !important;
         box-shadow: none !important;
       }
-      :host(mushroom-chips-card) ha-card::before {
+      :host(mushroom-chips-card) ha-card::before,
+      :host(mushroom-chips-card) ha-card::after {
         content: none !important;
         background: none !important;
       }
