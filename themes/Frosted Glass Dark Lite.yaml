@@ -233,6 +233,7 @@ Frosted Glass Dark Lite:
       --ha-card-border-width: 0px;
       --ha-card-border-color: transparent;
       --control-select-background-opacity: 0.14;
+      --control-select-selected-opacity: 1;
       --state-climate-off-color: rgba(234, 235, 238, 0.14);
 
       /* Glass system tokens (new, dark-tuned) */
