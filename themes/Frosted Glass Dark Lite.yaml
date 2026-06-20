@@ -197,9 +197,8 @@ Frosted Glass Dark Lite:
       }
       {% else %}
       ha-card {
-        --tile-color: rgba(234, 235, 238, 0.18);
+        --tile-color: rgba(234, 235, 238, 0.3);
         --tile-icon-color: rgba(234, 235, 238, 0.8);
-        --control-switch-off-color: rgba(234, 235, 238, 0.18);
       }
       {% endif %}
 
@@ -233,6 +232,7 @@ Frosted Glass Dark Lite:
       --control-select-background-opacity: 0.14;
       --control-select-selected-opacity: 1;
       --tile-icon-color: rgba(234, 235, 238, 0.8);
+      --control-switch-off-color: rgba(234, 235, 238, 0.18);
 
       /* Glass system tokens (new, dark-tuned) */
       --ha-card-glass-tint: rgba(28, 29, 33, 0.54);                                      # 1.2 Glass – global tint layer
