@@ -228,6 +228,7 @@ Frosted Glass Dark Lite:
       --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28), 0 0 0 0.5px rgba(234, 235, 238, 0.25);
       --ha-card-border-width: 0px;
       --ha-card-border-color: transparent;
+      --control-switch-background-opacity: 0.14;
 
       /* Glass system tokens (new, dark-tuned) */
       --ha-card-glass-tint: rgba(28, 29, 33, 0.54);                                      # 1.2 Glass – global tint layer
@@ -449,7 +450,6 @@ Frosted Glass Dark Lite:
   divider-color: 'rgba(84, 84, 98, 0.28)'
   scrollbar-thumb-color: 'rgb(68, 68, 88)'
   disabled-color: 'rgb(173, 176, 184)'
-  state-inactive-color: 'rgba(234, 235, 238, 0.14)'
   info-color: 'rgb(106, 116, 211)'
   success-color: 'rgb(118, 214, 152)'
   warning-color: 'rgb(255, 219, 117)'
