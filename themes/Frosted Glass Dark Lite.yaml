@@ -206,7 +206,7 @@ Frosted Glass Dark Lite:
     # Shadow DOM injection: override off-state colours for tile card controls
     "hui-card-features $ hui-toggle-card-feature $ ha-control-switch $": |
       :host {
-        --control-switch-off-color: var(--md-sys-color-secondary-container);
+        --control-switch-off-color: rgba(234, 235, 238, 0.14);
       }
     "hui-card-features $ hui-toggle-card-feature $ ha-control-button $": |
       :host {
