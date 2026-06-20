@@ -61,9 +61,9 @@ Frosted Glass Dark Lite:
         pointer-events: none;
         border-radius: inherit;
         box-shadow: var(--ha-card-glass-inset-shadow,                                     /* 1.2 Glass – inner bevel/glow */
-          3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.22) inset,
-          -2px -2px 0.5px -2px rgba(255, 255, 255, 0.18) inset,
-          0 0 8px 1px rgba(255, 255, 255, 0.06) inset,
+          3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.44) inset,
+          -2px -2px 0.5px -2px rgba(255, 255, 255, 0.36) inset,
+          0 0 8px 1px rgba(255, 255, 255, 0.12) inset,
           0 0 2px 0 rgba(0, 0, 0, 0.18)
         );
       }
@@ -205,14 +205,14 @@ Frosted Glass Dark Lite:
       --ha-card-background: rgba(30, 30, 30, 0.2);
       --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28);
       --ha-card-border-width: 0.5px;
-      --ha-card-border-color: rgba(234, 235, 238, 0.1);
+      --ha-card-border-color: rgba(234, 235, 238, 0.2);
 
       /* Glass system tokens (new, dark-tuned) */
       --ha-card-glass-tint: rgba(28, 29, 33, 0.36);                                      # 1.2 Glass – global tint layer
       --ha-card-glass-inset-shadow:                                                      # 1.2 Glass – inner bevel/glow (Liquid Glass inspired)
-        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.15) inset,
-        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.1) inset,
-        0 0 8px 1px rgba(255, 255, 255, 0.06) inset,
+        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.30) inset,
+        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.2) inset,
+        0 0 8px 1px rgba(255, 255, 255, 0.12) inset,
         0 0 2px 0 rgba(0, 0, 0, 0.18);
 
       /* Tokens - match structure to Light theme for consistency */
@@ -276,7 +276,7 @@ Frosted Glass Dark Lite:
       --token-color-background-label-badge-yellow: var(--token-color-feedback-warning);
       --token-color-background-label-badge-grey: rgb(83, 90, 103);
       --token-color-background-popup-scrim: rgba(0, 0, 0, 1);
-      --token-color-border-card: rgba(234, 235, 238, 0.22);
+      --token-color-border-card: rgba(234, 235, 238, 0.44);
       --token-color-switch-button-unchecked: rgba(234, 235, 238, 0.3);
       --token-color-switch-track-unchecked: rgba(234, 235, 238, 0.18);
       --token-color-codemirror-string: rgb(164, 209, 255);
@@ -442,10 +442,10 @@ Frosted Glass Dark Lite:
   card-background-color: 'rgba(30, 30, 30, 0.85)'
   ha-card-background: 'rgba(30, 30, 30, 0.9)'
   ha-card-border-radius: '18px'
-  ha-card-border-color: 'rgba(234, 235, 238, 0.22)'
+  ha-card-border-color: 'rgba(234, 235, 238, 0.44)'
   ha-card-border-width: '0.5px'
   ha-card-border-style: 'solid'
-  ha-card-border: '0.5px solid rgba(234, 235, 238, 0.1)'
+  ha-card-border: '0.5px solid rgba(234, 235, 238, 0.2)'
   ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.28)'
   ha-view-sections-column-gap: '17px'
   ha-view-sections-column-min-width: 320px

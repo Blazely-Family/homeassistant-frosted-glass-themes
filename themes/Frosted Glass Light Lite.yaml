@@ -10,7 +10,7 @@ Frosted Glass Light Lite:
   # =========================
   # HEADER (Top Bar)
   # =========================
-  app-header-background-color: 'rgba(234, 235, 238, 0.1)'
+  app-header-background-color: 'rgba(234, 235, 238, 0.2)'
   app-header-text-color: 'rgba(19, 21, 54, 0.95)'
   app-header-edit-background-color: 'rgba(255, 255, 255, 0.8)'
   app-header-edit-text-color: 'rgba(19, 21, 54, 0.98)'
@@ -54,9 +54,9 @@ Frosted Glass Light Lite:
       pointer-events: none;
       border-radius: inherit;
       box-shadow: var(--ha-card-glass-inset-shadow,                                                         /* 1.2 Glass – inner bevel/glow */
-        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.30) inset,
-        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.30) inset,
-        0 0 8px 1px rgba(255, 255, 255, 0.10) inset,
+        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.60) inset,
+        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.60) inset,
+        0 0 8px 1px rgba(255, 255, 255, 0.20) inset,
         0 0 2px 0 rgba(0, 0, 0, 0.10)
       );
     }
@@ -132,14 +132,14 @@ Frosted Glass Light Lite:
     --ha-card-background: rgba(242, 245, 255, 0.2);
     --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
     --ha-card-border-width: 0.5px;
-    --ha-card-border-color: rgba(255, 255, 255, 0.3);
+    --ha-card-border-color: rgba(255, 255, 255, 0.6);
 
     /* Glass system tokens (new) */
     --ha-card-glass-tint: rgba(255, 255, 255, 0.16);                                                      # 1.2 Glass – global tint layer
     --ha-card-glass-inset-shadow:                                                                         # 1.2 Glass – inner bevel/glow (Liquid Glass inspired)
-      3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.30) inset,
-      -2px -2px 0.5px -2px rgba(255, 255, 255, 0.30) inset,
-      0 0 8px 1px rgba(255, 255, 255, 0.10) inset,
+      3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.60) inset,
+      -2px -2px 0.5px -2px rgba(255, 255, 255, 0.60) inset,
+      0 0 8px 1px rgba(255, 255, 255, 0.20) inset,
       0 0 2px 0 rgba(0, 0, 0, 0.10);
    }
 
@@ -217,7 +217,7 @@ Frosted Glass Light Lite:
       --token-color-background-label-badge-yellow: var(--token-color-feedback-warning);
       --token-color-background-label-badge-grey: rgb(83, 90, 103);
       --token-color-background-popup-scrim: rgba(0, 0, 0, 1);
-      --token-color-border-card: rgba(255, 255, 255, 0.3);
+      --token-color-border-card: rgba(255, 255, 255, 0.6);
       --token-color-switch-button-unchecked: rgba(0, 0, 0, 0.6);
       --token-color-switch-track-unchecked: rgba(0, 0, 0, 0.3);
       --token-color-codemirror-string: rgb(0, 77, 153);
@@ -297,7 +297,7 @@ Frosted Glass Light Lite:
       --label-badge-background-color: rgba(230, 230, 230, 0.2) !important;
       --label-badge-text-color: rgba(19, 21, 54, 0.9) !important;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05) !important;
-      border: 0.5px solid rgba(255, 255, 255, 0.3) !important;
+      border: 0.5px solid rgba(255, 255, 255, 0.6) !important;
     }
 
     /* INPUTS */
@@ -417,10 +417,10 @@ Frosted Glass Light Lite:
   card-background-color: 'rgba(254, 244, 242, 0.9)'
   ha-card-background: 'rgba(254, 244, 242, 0.9)'
   ha-card-border-radius: '18px'
-  ha-card-border-color: 'rgba(255, 255, 255, 0.3)'
+  ha-card-border-color: 'rgba(255, 255, 255, 0.6)'
   ha-card-border-width: '0.5px'
   ha-card-border-style: 'solid'
-  ha-card-border: '0.5px solid rgba(255, 255, 255, 0.3)'
+  ha-card-border: '0.5px solid rgba(255, 255, 255, 0.6)'
   ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.15)'
   ha-view-sections-column-gap: '17px'
   ha-view-sections-column-min-width: 320px
