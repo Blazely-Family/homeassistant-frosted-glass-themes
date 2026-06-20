@@ -197,6 +197,7 @@ Frosted Glass Dark Lite:
       }
       {% else %}
       ha-card {
+        --state-climate-off-color: rgba(234, 235, 238, 0.25);
         --tile-icon-color: rgba(234, 235, 238, 0.8);
       }
       {% endif %}
