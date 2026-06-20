@@ -218,10 +218,6 @@ Frosted Glass Dark Lite:
         --control-button-background-color: var(--md-sys-color-secondary-container);
         --control-button-background-opacity: 0.85;
       }
-    "ha-control-select $": |
-      #option-off.option.selected::before {
-        background-color: rgba(234, 235, 238, 0.14) !important;
-      }
 
     # =========================
   # CARD-MOD-ROOT GLOBAL CSS
@@ -453,6 +449,7 @@ Frosted Glass Dark Lite:
   divider-color: 'rgba(84, 84, 98, 0.28)'
   scrollbar-thumb-color: 'rgb(68, 68, 88)'
   disabled-color: 'rgb(173, 176, 184)'
+  state-inactive-color: 'rgba(234, 235, 238, 0.14)'
   info-color: 'rgb(106, 116, 211)'
   success-color: 'rgb(118, 214, 152)'
   warning-color: 'rgb(255, 219, 117)'
