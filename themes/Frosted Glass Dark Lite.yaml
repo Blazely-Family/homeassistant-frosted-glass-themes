@@ -178,6 +178,9 @@ Frosted Glass Dark Lite:
         box-shadow: var(--ha-card-box-shadow), 0 0 10px 3px rgba(255, 158, 0, 0.22);
         {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
       }
+      ha-tile-container $ .background {
+        border: 1px solid rgba(255, 160, 30, 0.3);
+      }
       {% endif %}
 
       /* Tile card feature toggle icons: match secondary-container token so icons
