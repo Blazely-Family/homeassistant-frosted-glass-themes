@@ -56,7 +56,7 @@ Frosted Glass Dark Lite:
         content: '';
         position: absolute;
         inset: 0;
-        background: var(--ha-card-glass-tint, rgba(28, 29, 33, 0.18));                    /* 1.2 Glass – subtle dark tint */
+        background: var(--ha-card-glass-tint, rgba(28, 29, 33, 0.36));                    /* 1.2 Glass – subtle dark tint */
         z-index: -1;
         pointer-events: none;
         border-radius: inherit;
@@ -202,13 +202,13 @@ Frosted Glass Dark Lite:
   # =========================
   card-mod-root: |
     :host {
-      --ha-card-background: rgba(30, 30, 30, 0.1);
+      --ha-card-background: rgba(30, 30, 30, 0.2);
       --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28);
       --ha-card-border-width: 0.5px;
       --ha-card-border-color: rgba(234, 235, 238, 0.1);
 
       /* Glass system tokens (new, dark-tuned) */
-      --ha-card-glass-tint: rgba(28, 29, 33, 0.18);                                      # 1.2 Glass – global tint layer
+      --ha-card-glass-tint: rgba(28, 29, 33, 0.36);                                      # 1.2 Glass – global tint layer
       --ha-card-glass-inset-shadow:                                                      # 1.2 Glass – inner bevel/glow (Liquid Glass inspired)
         3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.15) inset,
         -2px -2px 0.5px -2px rgba(255, 255, 255, 0.1) inset,

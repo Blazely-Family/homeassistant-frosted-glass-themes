@@ -53,7 +53,7 @@ Frosted Glass Light:
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--ha-card-glass-tint, rgba(255, 255, 255, 0.08));                                    /* 1.2 Glass – subtle tint */
+      background: var(--ha-card-glass-tint, rgba(255, 255, 255, 0.16));                                    /* 1.2 Glass – subtle tint */
       backdrop-filter: var(--ha-card-backdrop-filter, blur(8px) saturate(1.2));
       -webkit-backdrop-filter: var(--ha-card-backdrop-filter, blur(8px) saturate(1.2));
       z-index: -1;
@@ -151,14 +151,14 @@ Frosted Glass Light:
   # =========================
   card-mod-root: |
    :host {
-    --ha-card-background: rgba(242, 245, 255, 0.1);
+    --ha-card-background: rgba(242, 245, 255, 0.2);
     --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
     --ha-card-border-width: 0.5px;
     --ha-card-border-color: rgba(255, 255, 255, 0.3);
     --ha-card-backdrop-filter: blur(8px) saturate(1.2);                                                   # 1.1.9 change - added blur & saturation for badges
 
     /* Glass system tokens (new) */
-    --ha-card-glass-tint: rgba(255, 255, 255, 0.08);                                                      # 1.2 Glass – global tint layer
+    --ha-card-glass-tint: rgba(255, 255, 255, 0.16);                                                      # 1.2 Glass – global tint layer
     --ha-card-glass-inset-shadow:                                                                         # 1.2 Glass – inner bevel/glow (Liquid Glass inspired)
       3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.30) inset,
       -2px -2px 0.5px -2px rgba(255, 255, 255, 0.30) inset,
