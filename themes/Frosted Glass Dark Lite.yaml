@@ -70,9 +70,9 @@ Frosted Glass Dark Lite:
         pointer-events: none;
         border-radius: inherit;
         box-shadow: var(--ha-card-glass-inset-shadow,                                    /* 1.2 Glass – inner bevel/glow */
-          3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.55) inset,
-          -2px -2px 0.5px -2px rgba(255, 255, 255, 0.38) inset,
-          0 0 8px 1px rgba(255, 255, 255, 0.15) inset,
+          3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.47) inset,
+          -2px -2px 0.5px -2px rgba(255, 255, 255, 0.32) inset,
+          0 0 8px 1px rgba(255, 255, 255, 0.13) inset,
           0 0 2px 0 rgba(0, 0, 0, 0.18)
         );
       }
@@ -238,9 +238,9 @@ Frosted Glass Dark Lite:
       /* Glass system tokens (new, dark-tuned) */
       --ha-card-glass-tint: rgba(28, 29, 33, 0.54);                                      # 1.2 Glass – global tint layer
       --ha-card-glass-inset-shadow:                                                      # 1.2 Glass – inner bevel/glow (Liquid Glass inspired)
-        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.38) inset,
-        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.25) inset,
-        0 0 8px 1px rgba(255, 255, 255, 0.15) inset,
+        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.32) inset,
+        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.21) inset,
+        0 0 8px 1px rgba(255, 255, 255, 0.13) inset,
         0 0 2px 0 rgba(0, 0, 0, 0.18);
 
       /* Tokens - match structure to Light theme for consistency */
