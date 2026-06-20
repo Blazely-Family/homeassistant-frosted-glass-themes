@@ -218,6 +218,10 @@ Frosted Glass Dark Lite:
         --control-button-background-color: var(--md-sys-color-secondary-container);
         --control-button-background-opacity: 0.85;
       }
+    "hui-card-features $ hui-climate-hvac-modes-card-feature $ ha-control-select $": |
+      #option-off.option.selected::before {
+        background-color: rgba(234, 235, 238, 0.14) !important;
+      }
 
     # =========================
   # CARD-MOD-ROOT GLOBAL CSS
