@@ -197,7 +197,6 @@ Frosted Glass Dark Lite:
       }
       {% else %}
       ha-card {
-        --tile-color: rgba(234, 235, 238, 0.3);
         --tile-icon-color: rgba(234, 235, 238, 0.8);
       }
       {% endif %}
@@ -209,6 +208,10 @@ Frosted Glass Dark Lite:
       }
 
     # Shadow DOM injection: override off-state colours for tile card controls
+    "hui-card-features $ hui-climate-hvac-modes-card-feature $ ha-control-select $": |
+      #option-off {
+        --control-select-color: rgba(234, 235, 238, 0.18);
+      }
     "hui-card-features $ hui-toggle-card-feature $ ha-control-button $": |
       :host {
         --control-button-background-color: var(--md-sys-color-secondary-container);
