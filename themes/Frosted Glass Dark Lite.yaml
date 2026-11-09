@@ -338,6 +338,19 @@ Frosted Glass Dark Lite:
         box-shadow: var(--ha-card-glass-inset-shadow), var(--frosted-glass-card-depth-shadow) !important;
       }
 
+      /* === Blazely: Mushroom template cards get the card tint too. Upstream keeps
+         their pseudo-elements free for per-card artwork, which we don't use, so
+         they showed lighter than every other card. === */
+      :host(mushroom-template-card) ha-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--ha-card-glass-tint);
+        z-index: -1;
+        pointer-events: none;
+        border-radius: inherit;
+      }
+
       /* === Blazely: active state glow === */
       {% set _entity = config.entity if config.entity is defined else '' %}
       {% set _d = _entity.split('.')[0] if _entity else '' %}
