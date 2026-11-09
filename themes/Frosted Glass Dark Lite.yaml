@@ -417,10 +417,18 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
-      /* === Blazely: unavailable. Faint diagonal stripes, under the glass === */
+      /* === Blazely: unavailable. Faint diagonal stripes on their own layer, over
+         the glass and under the content (a card background would be cleared by
+         the Mushroom template card rule above) === */
       {% if _s == 'unavailable' %}
-      ha-card {
-        background-image: repeating-linear-gradient(135deg, rgba(234, 235, 238, 0.06) 0 6px, transparent 6px 14px);
+      ha-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        border-radius: inherit;
+        background: repeating-linear-gradient(135deg, rgba(234, 235, 238, 0.05) 0 6px, transparent 6px 14px);
       }
       {% endif %}
 
