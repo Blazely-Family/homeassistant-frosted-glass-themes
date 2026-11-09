@@ -370,6 +370,21 @@ Frosted Glass Dark Lite:
         --grey-color: rgba(234, 235, 238, 0.8);
       }
 
+      /* === Blazely: icons that open "more info" when tapped get an outlined chip
+         instead of a filled one. Tiles default to toggling switchable entities and to
+         "more info" for everything else; Mushroom template cards default to nothing. === */
+      {% set _ita = config.icon_tap_action.action if (config.icon_tap_action is defined and config.icon_tap_action is mapping and config.icon_tap_action.action is defined) else none %}
+      {% if _ita is none and config.type is defined and config.type == 'tile' and config.entity is defined %}
+        {% set _ita = 'toggle' if config.entity.split('.')[0] in ['fan', 'input_boolean', 'light', 'switch', 'group', 'automation', 'humidifier', 'valve'] else 'more-info' %}
+      {% endif %}
+      {% if _ita == 'more-info' %}
+      ha-tile-icon {
+        --tile-icon-opacity: 0 !important;
+        --tile-icon-hover-opacity: 0 !important;
+        --blazely-icon-outline: inset 0 0 0 1px color-mix(in srgb, var(--tile-icon-color) 60%, transparent);
+      }
+      {% endif %}
+
       /* === Blazely: active state glow === */
       {% set _entity = config.entity if config.entity is defined else '' %}
       {% set _d = _entity.split('.')[0] if _entity else '' %}
@@ -421,6 +436,9 @@ Frosted Glass Dark Lite:
     # that are tappable themselves (icon_tap_action), so icons on cards that are only
     # tapped as a whole had none.
     "ha-tile-icon $": |
+      .container {
+        box-shadow: var(--blazely-icon-outline, none);
+      }
       .container:not(.background)::before {
         content: '';
         position: absolute;
