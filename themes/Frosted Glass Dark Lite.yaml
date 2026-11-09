@@ -355,6 +355,10 @@ Frosted Glass Dark Lite:
          same height as the card icons and the controls beside them (HA: 42px) === */
       hui-card-features {
         --feature-height: 36px;
+        /* Mode buttons and +/- bars use --disabled-color as their background, which
+           upstream tints blue-grey; use the same neutral grey as an off switch.
+           Selected and "on" colours come from the entity's state, not this. */
+        --disabled-color: rgba(234, 235, 238, 0.8);
       }
 
       /* === Blazely: active state glow === */
