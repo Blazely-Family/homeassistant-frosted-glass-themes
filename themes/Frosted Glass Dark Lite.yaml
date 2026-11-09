@@ -37,11 +37,12 @@ Frosted Glass Dark Lite:
         border-top: none !important;
         gap: 0 !important;
       }
-      /* No per-day panels; the glass shows through */
-      skylight-calendar-card .calendar-container .week-compact-container > *,
-      skylight-calendar-card .calendar-container .week-compact-container > .today,
-      skylight-calendar-card .calendar-container .calendar-grid > *,
-      skylight-calendar-card .calendar-container .calendar-grid > .today {
+      /* No per-day panels; the glass shows through. (Doubled class: the card's own
+         custom-background rule is .calendar-container.custom-background ... !important) */
+      skylight-calendar-card .calendar-container.calendar-container .week-compact-container > *,
+      skylight-calendar-card .calendar-container.calendar-container .week-compact-container > .today,
+      skylight-calendar-card .calendar-container.calendar-container .calendar-grid > *,
+      skylight-calendar-card .calendar-container.calendar-container .calendar-grid > .today {
         background: transparent !important;
       }
       /* The card draws a right and bottom grid line on every day (::before); along
