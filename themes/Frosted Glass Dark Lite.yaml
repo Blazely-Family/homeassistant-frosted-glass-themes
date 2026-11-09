@@ -9,6 +9,85 @@ Frosted Glass Dark Lite:
       .container {
         padding-top: 12px !important;
       }
+    # Skylight calendar card (custom:skylight-calendar-card). It draws its own panel
+    # instead of an ha-card, so the card glass above never reaches it; style it from
+    # the section grid it sits in. Covers the week and month layouts.
+    "hui-sections-view $ hui-grid-section $": |
+      /* Glass panel, like ha-card's tint and bevel */
+      skylight-calendar-card .calendar-container {
+        background: var(--ha-card-glass-tint, rgba(28, 29, 33, 0.54)) !important;
+        box-shadow:
+          0 12px 20px rgba(0, 0, 0, 0.28),
+          0 0 0 0.5px rgba(234, 235, 238, 0.25),
+          3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.47) inset,
+          -2px -2px 0.5px -2px rgba(255, 255, 255, 0.32) inset,
+          0 0 8px 1px rgba(255, 255, 255, 0.13) inset !important;
+      }
+      /* Week: the day grid fills the card (in Firefox it can stop short and
+         overflow, showing a scrollbar); no top rule or gaps between days */
+      skylight-calendar-card .calendar-container .week-compact-container {
+        height: 100% !important;
+        max-height: none !important;
+        border-top: none !important;
+        scrollbar-width: none !important;
+        gap: 0 !important;
+      }
+      /* Month: no top rule or gaps between days */
+      skylight-calendar-card .calendar-container .calendar-grid {
+        border-top: none !important;
+        gap: 0 !important;
+      }
+      /* No per-day panels; the glass shows through */
+      skylight-calendar-card .calendar-container .week-compact-container > *,
+      skylight-calendar-card .calendar-container .week-compact-container > .today,
+      skylight-calendar-card .calendar-container .calendar-grid > *,
+      skylight-calendar-card .calendar-container .calendar-grid > .today {
+        background: transparent !important;
+      }
+      /* The card draws a right and bottom grid line on every day (::before); along
+         the outside they form a grey border. Keep only faint lines between days. */
+      skylight-calendar-card .calendar-container .week-compact-container > *::before,
+      skylight-calendar-card .calendar-container .calendar-grid > *::before {
+        border-right-color: rgba(255, 255, 255, 0.08) !important;
+        border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+      }
+      skylight-calendar-card .calendar-container .week-compact-container > *::before {
+        border-bottom: none !important;
+      }
+      skylight-calendar-card .calendar-container .week-compact-container > :last-child::before,
+      skylight-calendar-card .calendar-container .calendar-grid > :nth-child(7n)::before {
+        border-right: none !important;
+      }
+      skylight-calendar-card .calendar-container .calendar-grid > :nth-last-child(-n + 7)::before {
+        border-bottom: none !important;
+      }
+      /* Week: event pills 6px clear of the card edge and the dividers (each
+         divider is drawn 1px inside its day's right edge, hence 7px there) */
+      skylight-calendar-card .calendar-container .week-day-column {
+        padding-left: 6px !important;
+        padding-right: 7px !important;
+      }
+      skylight-calendar-card .calendar-container .week-day-column:last-child {
+        padding-right: 6px !important;
+      }
+      /* Forecast low and high on one line, in time order like the BOM: "7° / 20°".
+         The separator belongs to the low, so a day with only a high (today, once
+         its overnight low has passed) shows none. */
+      skylight-calendar-card .forecast-temperatures {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: baseline !important;
+        gap: 0 !important;
+      }
+      skylight-calendar-card .forecast-temp-low {
+        order: -1;
+        opacity: 0.7;
+      }
+      skylight-calendar-card .forecast-temp-low::after {
+        content: ' / ';
+        white-space: pre;
+        opacity: 0.6;
+      }
 
   modes:                         # 1.2.1 - change add modes: dark-only declaration
     dark: {}
