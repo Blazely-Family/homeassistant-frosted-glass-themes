@@ -329,6 +329,15 @@ Frosted Glass Dark Lite:
         border: 1px solid rgba(255, 255, 255, 0.25);
       }
 
+      /* === Blazely: the navbar gets the same card surface as other cards (upstream
+         turns its tint layer off, and navbar-card sets its own small shadow) === */
+      .navbar ha-card,
+      :host(navbar-card) ha-card,
+      :host(.type-custom-navbar-card) ha-card {
+        --frosted-glass-card-layer-content: '';
+        box-shadow: var(--ha-card-glass-inset-shadow), var(--frosted-glass-card-depth-shadow) !important;
+      }
+
       /* === Blazely: active state glow === */
       {% set _entity = config.entity if config.entity is defined else '' %}
       {% set _d = _entity.split('.')[0] if _entity else '' %}
