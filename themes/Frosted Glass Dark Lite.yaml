@@ -351,6 +351,12 @@ Frosted Glass Dark Lite:
         border-radius: inherit;
       }
 
+      /* === Blazely: controls under a card (mode buttons, +/-, toggles) at 36px, the
+         same height as the card icons and the controls beside them (HA: 42px) === */
+      hui-card-features {
+        --feature-height: 36px;
+      }
+
       /* === Blazely: active state glow === */
       {% set _entity = config.entity if config.entity is defined else '' %}
       {% set _d = _entity.split('.')[0] if _entity else '' %}
