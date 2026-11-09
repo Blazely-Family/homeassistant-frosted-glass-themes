@@ -5,6 +5,91 @@ Frosted Glass Dark Lite:
   card-mod-theme: 'Frosted Glass Dark Lite'
   uix-theme: 'Frosted Glass Dark Lite'
 
+  # Blazely: view-level styles
+  card-mod-view-yaml: |
+    "hui-sections-view $": |
+      .container {
+        padding-top: 12px !important;
+      }
+    # Skylight calendar card (custom:skylight-calendar-card). It draws its own panel
+    # instead of an ha-card, so the card styles never reach it; style it from the
+    # section grid it sits in. Covers the week and month layouts.
+    "hui-sections-view $ hui-grid-section $": |
+      /* Same surface as an ha-card */
+      skylight-calendar-card .calendar-container {
+        background: var(--ha-card-glass-tint, transparent) !important;
+        border: var(--ha-card-border) !important;
+        box-shadow: var(--ha-card-box-shadow) !important;
+      }
+      /* Week: the day grid fills the card (in Firefox it can stop short and
+         overflow, showing a scrollbar); no top rule or gaps between days */
+      skylight-calendar-card .calendar-container .week-compact-container {
+        height: 100% !important;
+        max-height: none !important;
+        border-top: none !important;
+        scrollbar-width: none !important;
+        gap: 0 !important;
+      }
+      /* Month: no top rule or gaps between days */
+      skylight-calendar-card .calendar-container .calendar-grid {
+        border-top: none !important;
+        gap: 0 !important;
+      }
+      /* No per-day panels; the card surface shows through. (Doubled class: the
+         card's own custom-background rule is .calendar-container.custom-background
+         ... !important) */
+      skylight-calendar-card .calendar-container.calendar-container .week-compact-container > *,
+      skylight-calendar-card .calendar-container.calendar-container .week-compact-container > .today,
+      skylight-calendar-card .calendar-container.calendar-container .calendar-grid > *,
+      skylight-calendar-card .calendar-container.calendar-container .calendar-grid > .today {
+        background: transparent !important;
+      }
+      /* The card draws a right and bottom grid line on every day (::before); along
+         the outside they form a grey border. Keep only faint lines between days. */
+      skylight-calendar-card .calendar-container .week-compact-container > *::before,
+      skylight-calendar-card .calendar-container .calendar-grid > *::before {
+        border-right-color: rgba(255, 255, 255, 0.08) !important;
+        border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+      }
+      skylight-calendar-card .calendar-container .week-compact-container > *::before {
+        border-bottom: none !important;
+      }
+      skylight-calendar-card .calendar-container .week-compact-container > :last-child::before,
+      skylight-calendar-card .calendar-container .calendar-grid > :nth-child(7n)::before {
+        border-right: none !important;
+      }
+      skylight-calendar-card .calendar-container .calendar-grid > :nth-last-child(-n + 7)::before {
+        border-bottom: none !important;
+      }
+      /* Week: event pills 6px clear of the card edge and the dividers (each
+         divider is drawn 1px inside its day's right edge, hence 7px there) */
+      skylight-calendar-card .calendar-container .week-day-column {
+        padding-left: 6px !important;
+        padding-right: 7px !important;
+      }
+      skylight-calendar-card .calendar-container .week-day-column:last-child {
+        padding-right: 6px !important;
+      }
+      /* Forecast low and high on one line, in time order like the BOM: "7° / 20°".
+         The separator belongs to the low, so a day with only a high (today, once
+         its overnight low has passed) shows none. */
+      skylight-calendar-card .forecast-temperatures {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: baseline !important;
+        gap: 0 !important;
+      }
+      skylight-calendar-card .forecast-temp-low {
+        order: -1;
+        opacity: 0.7;
+      }
+      skylight-calendar-card .forecast-temp-low::after {
+        content: ' / ';
+        white-space: pre;
+        opacity: 0.6;
+      }
+
+
   # =========================
   # HEADER (Top Bar)
   # =========================
@@ -18,7 +103,7 @@ Frosted Glass Dark Lite:
   # =========================
   # SIDEBAR / DRAWER
   # =========================
-  sidebar-background-color: 'transparent'
+  sidebar-background-color: 'rgba(30, 30, 30, 0.8)'   # Blazely: darker sidebar
   sidebar-backdrop-filter: 'none'
   sidebar-border-color: 'rgba(255, 255, 255, 0.12)'
   sidebar-icon-color: 'rgba(234, 235, 238, 0.6)'
@@ -31,7 +116,7 @@ Frosted Glass Dark Lite:
   # =========================
   ha-dialog-surface-backdrop-filter: 'none'
   ha-dialog-surface-background: 'rgb(2, 6, 11)'
-  dialog-box-shadow: '0 24px 64px rgba(0, 0, 0, 0.48), 0 4px 18px rgba(0, 0, 0, 0.28)'
+  dialog-box-shadow: '0 0 0 0.5px rgba(234, 235, 238, 0.25), 0 24px 64px rgba(0, 0, 0, 0.48), 0 4px 18px rgba(0, 0, 0, 0.28)'   # Blazely: defined edge
   paper-dialog-background-color: 'rgb(2, 6, 11)'
   mdc-dialog-scrim-color: 'var(--frosted-glass-popup-scrim)'
 
@@ -76,161 +161,232 @@ Frosted Glass Dark Lite:
   # =========================
   # CARDS / CARD-MOD
   # =========================
-  card-mod-card: |
-    /* Keep fixed-position menus in the viewport coordinate system. */
-    ha-card {
-      background: transparent;
+  # Blazely: -yaml form so shadow-root paths can sit next to "."
+  card-mod-card-yaml: |
+    ".": |
+      /* Keep fixed-position menus in the viewport coordinate system. */
+      ha-card {
+        background: transparent;
 
-      position: relative;
-      isolation: isolate;
-    }
+        position: relative;
+        isolation: isolate;
+      }
 
-    /* Low specificity lets per-card artwork override the glass layer. */
-    :where(:host(:not(mushroom-template-card):not(room-summary-card))) ha-card::before {
-      content: var(--frosted-glass-card-layer-content, '');
-      position: absolute;
-      inset: 0;
-      background: var(--ha-card-glass-tint);
+      /* Low specificity lets per-card artwork override the glass layer. */
+      :where(:host(:not(mushroom-template-card):not(room-summary-card))) ha-card::before {
+        content: var(--frosted-glass-card-layer-content, '');
+        position: absolute;
+        inset: 0;
+        background: var(--ha-card-glass-tint);
 
-      z-index: -1;
-      pointer-events: none;
-      border-radius: inherit;
-    }
+        z-index: -1;
+        pointer-events: none;
+        border-radius: inherit;
+      }
 
-    /* Containers and text-only cards leave their content's surface intact. */
-    :host(hui-heading-card) ha-card,
-    :host(.text-only) ha-card,
-    ha-card.text-only,
-    :host(mushroom-title-card) ha-card,
-    :host(mushroom-chips-card) ha-card {
-      --ha-card-background: transparent;
-      --ha-card-backdrop-filter: none;
-      --ha-card-box-shadow: none;
-      --frosted-glass-card-layer-content: none;
-      background: none !important;
+      /* Containers and text-only cards leave their content's surface intact. */
+      :host(hui-heading-card) ha-card,
+      :host(.text-only) ha-card,
+      ha-card.text-only,
+      :host(mushroom-title-card) ha-card,
+      :host(mushroom-chips-card) ha-card {
+        --ha-card-background: transparent;
+        --ha-card-backdrop-filter: none;
+        --ha-card-box-shadow: none;
+        --frosted-glass-card-layer-content: none;
+        background: none !important;
 
-      box-shadow: none !important;
-      border: none !important;
-    }
-    :host(hui-heading-card) ha-card::before,
-    :host(.text-only) ha-card::before,
-    ha-card.text-only::before,
-    :host(mushroom-title-card) ha-card::before,
-    :host(mushroom-chips-card) ha-card::before {
-      content: none !important;
-    }
+        box-shadow: none !important;
+        border: none !important;
+      }
+      :host(hui-heading-card) ha-card::before,
+      :host(.text-only) ha-card::before,
+      ha-card.text-only::before,
+      :host(mushroom-title-card) ha-card::before,
+      :host(mushroom-chips-card) ha-card::before {
+        content: none !important;
+      }
 
-    /* Bubble owns its rounded surface. Its blur layer cannot trap fixed menus. */
-    :host(bubble-card) ha-card,
-    :host(.type-custom-bubble-card) ha-card,
-    ha-card:has(.bubble-container) {
-      background: none !important;
+      /* Bubble owns its rounded surface. Its blur layer cannot trap fixed menus. */
+      :host(bubble-card) ha-card,
+      :host(.type-custom-bubble-card) ha-card,
+      ha-card:has(.bubble-container) {
+        background: none !important;
 
-      border-radius: 0 !important;
-    }
-    :host(bubble-card) ha-card::before,
-    :host(.type-custom-bubble-card) ha-card::before,
-    ha-card:has(.bubble-container)::before {
-      content: none !important;
-    }
+        border-radius: 0 !important;
+      }
+      :host(bubble-card) ha-card::before,
+      :host(.type-custom-bubble-card) ha-card::before,
+      ha-card:has(.bubble-container)::before {
+        content: none !important;
+      }
 
 
-    :where(:host(bubble-card), :host(.type-custom-bubble-card)) ha-card,
-    ha-card:where(:has(.bubble-container)) {
-      box-shadow: none;
-      border: none;
-    }
-    .bubble-container {
-      background: transparent !important;
-      box-shadow: var(--bubble-box-shadow);
-    }
-    .bubble-background {
-      background: transparent !important;
-      transition: none;
-    }
-    .bubble-container::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      border-radius: inherit;
-    }
+      :where(:host(bubble-card), :host(.type-custom-bubble-card)) ha-card,
+      ha-card:where(:has(.bubble-container)) {
+        box-shadow: none;
+        border: none;
+      }
+      .bubble-container {
+        background: transparent !important;
+        box-shadow: var(--bubble-box-shadow);
+      }
+      .bubble-background {
+        background: transparent !important;
+        transition: none;
+      }
+      .bubble-container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border-radius: inherit;
+      }
 
-    /* Lite also disables Bubble's own inline popup blur defaults. */
-    :host(bubble-card) .bubble-pop-up,
-    :host(.type-custom-bubble-card) .bubble-pop-up {
-      --custom-popup-filter: none !important;
-    }
+      /* Lite also disables Bubble's own inline popup blur defaults. */
+      :host(bubble-card) .bubble-pop-up,
+      :host(.type-custom-bubble-card) .bubble-pop-up {
+        --custom-popup-filter: none !important;
+      }
 
-    /* Transparent Hue surfaces need the theme's matching foreground. */
-    :host(hue-like-light-card) ha-card,
-    :host(.type-custom-hue-like-light-card) ha-card {
-      --hue-text-color: var(--primary-text-color);
-      background: transparent !important;
-      color: var(--primary-text-color) !important;
-    }
+      /* Transparent Hue surfaces need the theme's matching foreground. */
+      :host(hue-like-light-card) ha-card,
+      :host(.type-custom-hue-like-light-card) ha-card {
+        --hue-text-color: var(--primary-text-color);
+        background: transparent !important;
+        color: var(--primary-text-color) !important;
+      }
 
-    /* Navbar resolves its native background against card-background-color.
-       Scope the transparent base here; menus elsewhere keep their opaque base.
-       Public --navbar-background-color overrides remain owned by the card/user. */
-    :host(navbar-card),
-    :host(.type-custom-navbar-card) {
-      --card-background-color: var(--ha-card-background, transparent);
-      --material-shadow-elevation-2dp: var(--ha-card-box-shadow);
-    }
-    .navbar ha-card,
-    :host(navbar-card) ha-card,
-    :host(.type-custom-navbar-card) ha-card {
-      --frosted-glass-card-layer-content: none;
-      box-shadow: var(--navbar-box-shadow-desktop, var(--ha-card-box-shadow));
-      background: var(--navbar-background-color, transparent);
+      /* Navbar resolves its native background against card-background-color.
+         Scope the transparent base here; menus elsewhere keep their opaque base.
+         Public --navbar-background-color overrides remain owned by the card/user. */
+      :host(navbar-card),
+      :host(.type-custom-navbar-card) {
+        --card-background-color: var(--ha-card-background, transparent);
+        --material-shadow-elevation-2dp: var(--ha-card-box-shadow);
+      }
+      .navbar ha-card,
+      :host(navbar-card) ha-card,
+      :host(.type-custom-navbar-card) ha-card {
+        --frosted-glass-card-layer-content: none;
+        box-shadow: var(--navbar-box-shadow-desktop, var(--ha-card-box-shadow));
+        background: var(--navbar-background-color, transparent);
 
-      border: var(--ha-card-border);
-    }
-    :host(navbar-card) .popup-item .button {
+        border: var(--ha-card-border);
+      }
+      :host(navbar-card) .popup-item .button {
 
-      border: var(--ha-card-border);
-    }
+        border: var(--ha-card-border);
+      }
 
-    :host(:where(slider-button-card, .type-custom-slider-button-card)) {
-      --btn-bg-color-off: var(--frosted-glass-slider-button-off);
-      --btn-bg-color-on: var(--frosted-glass-slider-button-on);
-      --slider-track-color: var(--frosted-glass-slider-track);
-    }
+      :host(:where(slider-button-card, .type-custom-slider-button-card)) {
+        --btn-bg-color-off: var(--frosted-glass-slider-button-off);
+        --btn-bg-color-on: var(--frosted-glass-slider-button-on);
+        --slider-track-color: var(--frosted-glass-slider-track);
+      }
 
-    /* Room Summary already paints its own corner reflections. */
-    :where(:host(room-summary-card)) ha-card {
-      --ha-card-box-shadow: var(--frosted-glass-card-depth-shadow);
-    }
+      /* Room Summary already paints its own corner reflections. */
+      :where(:host(room-summary-card)) ha-card {
+        --ha-card-box-shadow: var(--frosted-glass-card-depth-shadow);
+      }
 
-    /* Leave both pseudo-elements available for Mushroom template artwork. */
-    :host(mushroom-template-card) ha-card {
-      background: transparent !important;
+      /* Leave both pseudo-elements available for Mushroom template artwork. */
+      :host(mushroom-template-card) ha-card {
+        background: transparent !important;
 
-    }
+      }
 
-    /* stack-in-card writes this inline only when keep.background is false and
-       --keep-background is not true. Honor that decision instead of hiding every
-       descendant, including those whose background was explicitly kept. */
-    ha-card[style*="background: transparent"] {
-      --ha-card-backdrop-filter: none;
+      /* stack-in-card writes this inline only when keep.background is false and
+         --keep-background is not true. Honor that decision instead of hiding every
+         descendant, including those whose background was explicitly kept. */
+      ha-card[style*="background: transparent"] {
+        --ha-card-backdrop-filter: none;
 
-      border: none;
-    }
-    ha-card[style*="background: transparent"]::before {
-      content: none !important;
-    }
+        border: none;
+      }
+      ha-card[style*="background: transparent"]::before {
+        content: none !important;
+      }
 
-    .mdc-data-table {
-      background: none !important;
-    }
-    .mdc-data-table__header-cell {
-      background: var(--frosted-glass-control-surface);
-    }
+      .mdc-data-table {
+        background: none !important;
+      }
+      .mdc-data-table__header-cell {
+        background: var(--frosted-glass-control-surface);
+      }
+
+      /* === Blazely: camera cards. The card's own edge highlights are an inner
+         shadow that the video covers, so draw them, plus a light border, on a
+         layer above the video. === */
+      :host(.type-custom-advanced-camera-card) ha-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        border-radius: inherit;
+        box-shadow: var(--ha-card-glass-inset-shadow);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+      /* === Blazely: active state glow === */
+      {% set _entity = config.entity if config.entity is defined else '' %}
+      {% set _d = _entity.split('.')[0] if _entity else '' %}
+      {% set _s = states[_entity].state if _entity else '' %}
+      {% set _active_map = {
+        'light':               ['on'],
+        'switch':              ['on'],
+        'fan':                 ['on'],
+        'input_boolean':       ['on'],
+        'binary_sensor':       ['on'],
+        'automation':          ['on'],
+        'script':              ['on'],
+        'humidifier':          ['on'],
+        'cover':               ['open', 'opening', 'closing'],
+        'climate':             ['heat', 'cool', 'heat_cool', 'fan_only', 'dry', 'auto'],
+        'alarm_control_panel': ['armed_home', 'armed_away', 'armed_night', 'armed_vacation', 'armed_custom_bypass', 'arming', 'disarming', 'triggered', 'pending'],
+        'lock':                ['unlocked', 'locking', 'unlocking'],
+        'media_player':        ['playing', 'paused', 'buffering'],
+        'vacuum':              ['cleaning', 'returning'],
+        'person':              ['not_home'],
+        'device_tracker':      ['not_home'],
+      } %}
+      {% set _motion_map = {
+        'cover': ['opening', 'closing'],
+        'lock':  ['locking', 'unlocking'],
+      } %}
+      {% set _active = _d in _active_map and _s in _active_map[_d] %}
+      {% set _motion = _d in _motion_map and _s in _motion_map[_d] %}
+      @keyframes active-border-pulse {
+        0%, 100% { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 14px 4px rgba(255, 158, 0, 0.35); }
+        50%       { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 6px 1px rgba(255, 158, 0, 0.10); }
+      }
+      {% if _active %}
+      ha-card {
+        --ha-card-glass-tint: rgba(255, 140, 0, 0.10);
+        --ha-card-border-color: rgba(255, 180, 30, 0.35);
+        border-color: rgba(255, 180, 30, 0.35) !important;
+        box-shadow:
+          3px 3px 0.5px -3.5px rgba(255, 200, 30, 0.65) inset,
+          -2px -2px 0.5px -2px rgba(255, 200, 30, 0.43) inset,
+          0 0 6px 1px rgba(255, 160, 30, 0.50) inset,
+          var(--frosted-glass-card-depth-shadow),
+          0 0 8px 1px rgba(255, 158, 0, 0.18) !important;
+        {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
+      }
+      {% endif %}
+
+    # Blazely: the toggle feature's switch is greyed when off; when on it keeps Home
+    # Assistant's on colour. (Not a template: _active can't see the card's entity
+    # at this depth.)
+    "hui-card-features $ hui-card-feature $ hui-toggle-card-feature $ ha-control-switch $": |
+      div#switch:not([checked]) div.button {
+        background-color: rgba(234, 235, 238, 0.25) !important;
+      }
 
   # Global glass tokens are inherited by dialogs, sidebar and custom cards.
-  ha-card-glass-tint: 'transparent'
-  ha-card-glass-inset-shadow: '3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.30) inset, -2px -2px 0.5px -2px rgba(255, 255, 255, 0.20) inset, 0 0 8px 1px rgba(255, 255, 255, 0.06) inset, 0 0 2px 0 rgba(0, 0, 0, 0.18)'
+  ha-card-glass-tint: 'rgba(28, 29, 33, 0.25)'   # Blazely: a little tint
+  ha-card-glass-inset-shadow: '3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.47) inset, -2px -2px 0.5px -2px rgba(255, 255, 255, 0.32) inset, 0 0 8px 1px rgba(255, 255, 255, 0.13) inset, 0 0 2px 0 rgba(0, 0, 0, 0.18)'   # Blazely: stronger corner highlights
   frosted-glass-menu-surface: 'rgb(2, 6, 11)'
   frosted-glass-control-surface: 'rgba(2, 6, 11, 0.48)'
   frosted-glass-badge-shadow: 'var(--ha-card-glass-inset-shadow), 0 3px 10px rgba(0, 0, 0, 0.22)'
@@ -543,18 +699,6 @@ Frosted Glass Dark Lite:
   ha-color-form-background-disabled: 'rgba(12, 20, 30, 0.30)'
   mdc-text-field-fill-color: 'rgba(12, 20, 30, 0.48)'
   mdc-select-fill-color: 'rgba(12, 20, 30, 0.48)'
-  ha-border-radius-square: '0px'
-  ha-border-radius-sm: '8px'
-  ha-border-radius-md: '12px'
-  ha-border-radius-lg: '18px'
-  ha-border-radius-xl: '22px'
-  ha-border-radius-2xl: '28px'
-  ha-border-radius-3xl: '32px'
-  ha-border-radius-4xl: '40px'
-  ha-border-radius-5xl: '44px'
-  ha-border-radius-6xl: '48px'
-  ha-border-radius-pill: '9999px'
-  ha-border-radius-circle: '50%'
   ha-switch-size: '24px'
   ha-switch-thumb-size: '18px'
   ha-switch-width: '48px'
@@ -566,7 +710,6 @@ Frosted Glass Dark Lite:
   ha-switch-checked-background-color-hover: 'rgba(122, 162, 190, 0.46)'
   ha-switch-checked-thumb-background-color: 'rgb(122, 162, 190)'
   ha-switch-checked-thumb-background-color-hover: 'rgb(122, 162, 190)'
-  control-switch-border-radius: '9999px'
   control-button-icon-color: 'rgba(234, 235, 238, 0.95)'
   control-button-background-color: 'rgb(122, 162, 190)'
   control-button-background-opacity: '0.28'
@@ -633,3 +776,46 @@ Frosted Glass Dark Lite:
   modes:
     dark:
       app-theme-color: 'rgb(2, 6, 11)'                                                      # 1.2 Glass – header theme color hint for browsers
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Blazely additions
+  # ─────────────────────────────────────────────────────────────────────────
+  # Clock card digit colour — reference as var(--clock-digit-color) in card_mod
+  clock-digit-color: 'rgba(240, 243, 255, 0.95)'
+
+  # mass-player-card (with expressive: false): map the palette onto its theme engine
+  mass-player-card-default-border-radius: '18px'
+  mass-player-card-players-border-radius: '14px'
+  mass-player-card-queue-border-radius: '14px'
+  mass-player-card-media-row-border-radius: '10px'
+  mass-player-card-player-row-border-radius: '10px'
+  mass-player-card-browser-card-border-radius: '14px'
+  mass-player-card-media-row-thumbnail-border-radius: '8px'
+  mass-player-card-player-blur-color: 'rgb(28, 29, 33)'
+  mass-player-card-player-name-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-control-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-search-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-search-placeholder-text-color: 'rgba(234, 235, 238, 0.45)'
+  mass-player-card-player-control-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-play-pause-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-play-pause-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-player-button-play-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-play-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-player-button-pause-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-pause-text-color: 'rgba(234, 235, 238, 0.98)'
+  mass-player-card-player-button-previous-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-previous-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-next-icon-color: 'rgba(234, 235, 238, 0.95)'
+  mass-player-card-player-button-next-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-shuffle-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-shuffle-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-repeat-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-repeat-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-power-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-power-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-favorite-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-player-button-favorite-text-color: 'rgba(234, 235, 238, 0.8)'
+  mass-player-card-player-button-mute-icon-color: 'rgba(234, 235, 238, 0.75)'
+  mass-player-card-audio-bars-color: 'var(--primary-color)'
+  mass-player-card-browser-enqueue-menu-icon-primary-color: 'var(--primary-color)'
+  mass-player-card-browser-enqueue-menu-icon-secondary-color: 'rgba(30, 30, 30, 0.9)'

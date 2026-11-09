@@ -1,4 +1,12 @@
 # Frosted Glass Theme for Home Assistant ✨
+
+> **Blazely-Family fork.** Upstream with our changes to *Frosted Glass Dark Lite* only:
+> a 25% card tint, stronger corner highlights, Home Assistant's own control corner radii,
+> a darker sidebar, an edge ring on dialogs, an orange glow on cards of active entities,
+> camera cards with their edge drawn above the video, the toggle feature's off state,
+> Skylight calendar card styling, and clock / Music Assistant player card variables.
+> Installed as a Marketplace custom repository. Other variants are upstream as-is.
+
 [![HACS Badge](https://img.shields.io/badge/Available%20in-HACS-41BDF5?logo=home-assistant&logoColor=white)](https://my.home-assistant.io/redirect/hacs_repository/?owner=WessamLauf&repository=homeassistant-frosted-glass-themes&category=theme)
 [![Latest Release](https://img.shields.io/github/v/release/wessamlauf/homeassistant-frosted-glass-themes?label=Release&logo=github)](https://github.com/wessamlauf/homeassistant-frosted-glass-themes/releases)
 [![Last Commit](https://img.shields.io/github/last-commit/wessamlauf/homeassistant-frosted-glass-themes?label=Last%20commit)](https://github.com/wessamlauf/homeassistant-frosted-glass-themes/commits/main)
