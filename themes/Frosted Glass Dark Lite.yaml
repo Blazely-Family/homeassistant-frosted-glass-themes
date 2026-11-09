@@ -370,21 +370,6 @@ Frosted Glass Dark Lite:
         --grey-color: rgba(234, 235, 238, 0.8);
       }
 
-      /* === Blazely: icons that open "more info" when tapped get an outlined chip
-         instead of a filled one. Tiles default to toggling switchable entities and to
-         "more info" for everything else; Mushroom template cards default to nothing. === */
-      {% set _ita = config.icon_tap_action.action if (config.icon_tap_action is defined and config.icon_tap_action is mapping and config.icon_tap_action.action is defined) else none %}
-      {% if _ita is none and config.type is defined and config.type == 'tile' and config.entity is defined %}
-        {% set _ita = 'toggle' if config.entity.split('.')[0] in ['fan', 'input_boolean', 'light', 'switch', 'group', 'automation', 'humidifier', 'valve'] else 'more-info' %}
-      {% endif %}
-      {% if _ita == 'more-info' %}
-      ha-tile-icon {
-        --tile-icon-opacity: 0 !important;
-        --tile-icon-hover-opacity: 0 !important;
-        --blazely-icon-outline: inset 0 0 0 1px color-mix(in srgb, var(--tile-icon-color) 60%, transparent);
-      }
-      {% endif %}
-
       /* === Blazely: active state glow === */
       {% set _entity = config.entity if config.entity is defined else '' %}
       {% set _d = _entity.split('.')[0] if _entity else '' %}
@@ -432,22 +417,12 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
-    # Blazely: every card icon gets its chip. Home Assistant only draws it behind icons
-    # that are tappable themselves (icon_tap_action), so icons on cards that are only
-    # tapped as a whole had none.
+    # Blazely: Home Assistant draws the icon chip only behind icons that are tappable
+    # themselves (icon_tap_action). Keep that, and give the other icons a ring in
+    # their colour instead, so every icon has the same rounded-square outline.
     "ha-tile-icon $": |
-      .container {
-        box-shadow: var(--blazely-icon-outline, none);
-      }
-      .container:not(.background)::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--tile-icon-color);
-        opacity: var(--tile-icon-opacity);
+      .container:not(.background) {
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tile-icon-color) 60%, transparent);
       }
     # Blazely: timer-bar-card (mushroom style) draws its icon with the older Mushroom
     # shape and "disabled" grey (111, 111, 111); use the same off look as other icons.
