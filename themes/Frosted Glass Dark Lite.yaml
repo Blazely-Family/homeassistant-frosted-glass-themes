@@ -359,6 +359,9 @@ Frosted Glass Dark Lite:
            upstream tints blue-grey; use the same neutral grey as an off switch.
            Selected and "on" colours come from the entity's state, not this. */
         --disabled-color: rgba(234, 235, 238, 0.8);
+        /* A climate's selected "Off" button in the same grey as an off switch's knob
+           (it was a bright near-white). Heat, cool etc. keep their own colours. */
+        --state-climate-off-color: rgba(234, 235, 238, 0.25);
       }
 
       /* === Blazely: active state glow === */
