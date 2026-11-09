@@ -419,10 +419,14 @@ Frosted Glass Dark Lite:
 
     # Blazely: Home Assistant draws the icon chip only behind icons that are tappable
     # themselves (icon_tap_action). Keep that, and give the other icons a ring in
-    # their colour instead, so every icon has the same rounded-square outline.
+    # their colour instead, so every icon has the same rounded-square outline. The
+    # ring takes the icon's hue at a fixed strength, so a bright sensor icon and a
+    # grey "off" icon get the same ring. (The color-mix line is for browsers without
+    # relative colours.)
     "ha-tile-icon $": |
       .container:not(.background) {
-        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tile-icon-color) 60%, transparent);
+        box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--tile-icon-color) 60%, transparent);
+        box-shadow: inset 0 0 0 2px rgb(from var(--tile-icon-color) r g b / 0.48);
       }
     # Blazely: timer-bar-card (mushroom style) draws its icon with the older Mushroom
     # shape and "disabled" grey (111, 111, 111); use the same off look as other icons.
@@ -735,7 +739,12 @@ Frosted Glass Dark Lite:
   ha-card-border: 'var(--ha-card-border-width) solid var(--ha-card-border-color)'
   frosted-glass-card-depth-shadow: '0 14px 38px rgba(0, 0, 0, 0.34), 0 2px 10px rgba(0, 0, 0, 0.24)'
   ha-card-box-shadow: 'var(--ha-card-glass-inset-shadow), 0 0 0 0.5px rgba(234, 235, 238, 0.22), var(--frosted-glass-card-depth-shadow)'   # Blazely: + edge ring
-  ha-view-sections-column-gap: '17px'
+  # Blazely: one 12px gap between sections and between cards, so layouts that
+  # ignore section boundaries still line up
+  ha-view-sections-column-gap: '12px'
+  ha-view-sections-row-gap: '12px'
+  ha-section-grid-column-gap: '12px'
+  ha-section-grid-row-gap: '12px'
   ha-view-sections-column-min-width: 320px
 
   ha-dialog-scrim-backdrop-filter: 'none'
