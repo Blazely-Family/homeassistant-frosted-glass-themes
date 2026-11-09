@@ -417,6 +417,13 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
+      /* === Blazely: unavailable. Faint diagonal stripes, under the glass === */
+      {% if _s == 'unavailable' %}
+      ha-card {
+        background-image: repeating-linear-gradient(135deg, rgba(234, 235, 238, 0.06) 0 6px, transparent 6px 14px);
+      }
+      {% endif %}
+
     # Blazely: Home Assistant draws the icon chip only behind icons that are tappable
     # themselves (icon_tap_action). Keep that, and give the other icons a ring in
     # their colour instead, so every icon has the same rounded-square outline. The
