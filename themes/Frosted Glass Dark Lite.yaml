@@ -501,13 +501,6 @@ Frosted Glass Dark Lite:
        ha-adaptive-dialog), so the header parts are matched directly, not with
        ::slotted. HA's own dialog styles are adopted stylesheets, which win
        ties over this style element, hence !important. Title on the left in 20px semibold, close button top-right. */
-    /* Centred vertically like the calendar popup. HA pins more-info dialogs to
-       the top (haStyleDialogFixedTop) so they don't jump as content resizes;
-       auto margins centre them instead. */
-    ha-adaptive-dialog {
-      --vertical-align-dialog: center !important;
-      --dialog-surface-margin-top: auto !important;
-    }
     ha-icon-button[slot="headerNavigationIcon"] {
       position: absolute;
       top: 12px;
