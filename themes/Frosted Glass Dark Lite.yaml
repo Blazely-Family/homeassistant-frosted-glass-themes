@@ -329,6 +329,11 @@ Frosted Glass Dark Lite:
         box-shadow: var(--ha-card-glass-inset-shadow);
         border: 1px solid rgba(255, 255, 255, 0.25);
       }
+      /* Camera card buttons (mute etc.) are rounded squares, not circles. The card
+         sets this on its own host, so override it on the ha-card inside. */
+      :host(.type-custom-advanced-camera-card) ha-card {
+        --advanced-camera-card-button-border-radius: 12px;
+      }
 
       /* === Blazely: the navbar gets the same card surface as other cards (upstream
          turns its tint layer off, and navbar-card sets its own small shadow) === */
