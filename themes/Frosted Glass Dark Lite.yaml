@@ -383,7 +383,7 @@ Frosted Glass Dark Lite:
         'automation':          ['on'],
         'script':              ['on'],
         'humidifier':          ['on'],
-        'sensor':              ['in_use'],   # Blazely: washer / dryer timers
+        'sensor':              ['in_use'],
         'cover':               ['open', 'opening', 'closing'],
         'climate':             ['heat', 'cool', 'heat_cool', 'fan_only', 'dry', 'auto'],
         'alarm_control_panel': ['armed_home', 'armed_away', 'armed_night', 'armed_vacation', 'armed_custom_bypass', 'arming', 'disarming', 'triggered', 'pending'],
