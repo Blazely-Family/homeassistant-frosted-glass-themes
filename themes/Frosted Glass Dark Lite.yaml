@@ -741,6 +741,10 @@ Frosted Glass Dark Lite:
   title-font-size: '20px'
   ha-heading-card-title-font-size: 'var(--ha-font-size-l)'
   ha-heading-card-title-font-weight: '500'
+  # Heading card button badges match the badge/pill height (38px). The wall
+  # panel status strip uses one as a native placeholder that holds the strip
+  # row open before its markdown template renders, so the page doesn't reflow.
+  ha-heading-badge-size: '38px'
   ha-font-smoothing: 'antialiased'
 
   # =========================
