@@ -115,9 +115,10 @@ Frosted Glass Dark Lite:
   # DIALOGS
   # =========================
   ha-dialog-surface-backdrop-filter: 'none'
-  ha-dialog-surface-background: 'rgb(2, 6, 11)'
-  dialog-box-shadow: '0 0 0 0.5px rgba(234, 235, 238, 0.25), 0 24px 64px rgba(0, 0, 0, 0.48), 0 4px 18px rgba(0, 0, 0, 0.28)'   # Blazely: defined edge
-  paper-dialog-background-color: 'rgb(2, 6, 11)'
+  ha-dialog-surface-background: '#3b434d'   # Blazely: slate, matching the calendar card's event popup
+  ha-dialog-border-radius: '12px'   # Blazely: calendar popup corners
+  dialog-box-shadow: '0 24px 64px rgba(0, 0, 0, 0.48), 0 4px 18px rgba(0, 0, 0, 0.28)'   # Blazely: no edge ring on the slate surface
+  paper-dialog-background-color: '#3b434d'
   mdc-dialog-scrim-color: 'var(--frosted-glass-popup-scrim)'
 
   # =========================
@@ -785,7 +786,7 @@ Frosted Glass Dark Lite:
   ha-bottom-sheet-scrim-backdrop-filter: 'none'
   ha-bottom-sheet-scrim-color: 'var(--mdc-dialog-scrim-color)'
 
-  frosted-glass-popup-surface: 'rgb(2, 6, 11)'
+  frosted-glass-popup-surface: '#3b434d'   # Blazely: same slate as dialogs
 
   frosted-glass-popup-backdrop-filter: 'none'
 
