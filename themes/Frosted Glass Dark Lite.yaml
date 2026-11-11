@@ -523,7 +523,7 @@ Frosted Glass Dark Lite:
       color: var(--secondary-text-color) !important;
       /* Level with the close button. */
       position: relative;
-      top: 2px;
+      top: 4px;
     }
     /* Non-admin users (the wall panels): no history. HA only renders the
        settings button and the menu for admins, so a header without the menu
