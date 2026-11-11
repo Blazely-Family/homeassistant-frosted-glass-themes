@@ -499,7 +499,8 @@ Frosted Glass Dark Lite:
     /* Blazely: more-info header in the calendar popup's layout. UIX puts this
        style inside ha-more-info-dialog's shadow root (as a light-DOM child of
        ha-adaptive-dialog), so the header parts are matched directly, not with
-       ::slotted. Title on the left in 20px semibold, close button top-right. */
+       ::slotted. HA's own dialog styles are adopted stylesheets, which win
+       ties over this style element, hence !important. Title on the left in 20px semibold, close button top-right. */
     ha-icon-button[slot="headerNavigationIcon"] {
       position: absolute;
       top: 12px;
@@ -508,12 +509,12 @@ Frosted Glass Dark Lite:
       color: var(--secondary-text-color);
     }
     .title .main {
-      font-size: 20px;
-      font-weight: 600;
+      font-size: 20px !important;
+      font-weight: 600 !important;
     }
     /* Admins keep the menu: make room for the close button beside it. */
     ha-dropdown[slot="headerActionItems"] {
-      margin-inline-end: 44px;
+      margin-inline-end: 44px !important;
     }
     /* Wall panels (users named "... Panel"): no history, settings or menu.
        History leaves a panel stuck with no way back. UIX's user variable is
