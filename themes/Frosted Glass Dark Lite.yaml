@@ -495,6 +495,31 @@ Frosted Glass Dark Lite:
       --mdc-icon-size: 16px;
     }
 
+  card-mod-more-info: |
+    /* Blazely: more-info header in the calendar popup's layout. Title on the
+       left in 20px semibold, close button top-right. */
+    ha-icon-button[slot="headerNavigationIcon"] {
+      position: absolute;
+      top: 12px;
+      inset-inline-end: 12px;
+      z-index: 2;
+      color: var(--secondary-text-color);
+    }
+    .title .main {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    /* Admins keep the menu: make room for the close button beside it. */
+    ha-dropdown[slot="headerActionItems"] {
+      margin-inline-end: 44px;
+    }
+    /* Wall panels (non-admin users): no history, settings or menu. */
+    {% if not user.is_admin %}
+    [slot="headerActionItems"] {
+      display: none !important;
+    }
+    {% endif %}
+
   card-mod-sidebar: |
     :host {
       position: relative;
