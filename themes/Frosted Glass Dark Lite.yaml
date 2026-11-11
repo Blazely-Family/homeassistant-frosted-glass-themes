@@ -516,14 +516,12 @@ Frosted Glass Dark Lite:
     ha-dropdown[slot="headerActionItems"] {
       margin-inline-end: 44px !important;
     }
-    /* Wall panels (users named "... Panel"): no history, settings or menu.
-       History leaves a panel stuck with no way back. UIX's user variable is
-       the user's name. */
-    {% if user is string and user.endswith(' Panel') %}
-    [slot="headerActionItems"] {
+    /* Non-admin users (the wall panels): no history. HA only renders the
+       settings button and the menu for admins, so a header without the menu
+       belongs to a non-admin. History leaves a panel stuck with no way back. */
+    ha-adaptive-dialog:not(:has(> ha-dropdown[slot="headerActionItems"])) > [slot="headerActionItems"] {
       display: none !important;
     }
-    {% endif %}
 
   card-mod-sidebar: |
     :host {
