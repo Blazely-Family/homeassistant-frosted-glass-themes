@@ -500,13 +500,6 @@ Frosted Glass Dark Lite:
        at the dialog's ha-adaptive-dialog, so the header parts (slotted in from
        ha-more-info-dialog) are reached with ::slotted. Title on the left in
        20px semibold, close button top-right. */
-    /* TEMP probe: proves this block is applied at all. */
-    :host,
-    ::slotted(*),
-    ha-dialog,
-    ha-bottom-sheet {
-      outline: 3px solid red !important;
-    }
     ::slotted(ha-icon-button[slot="headerNavigationIcon"]) {
       position: absolute;
       top: 12px;
