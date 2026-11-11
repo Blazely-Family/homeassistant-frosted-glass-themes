@@ -501,7 +501,10 @@ Frosted Glass Dark Lite:
        ha-more-info-dialog) are reached with ::slotted. Title on the left in
        20px semibold, close button top-right. */
     /* TEMP probe: proves this block is applied at all. */
-    :host {
+    :host,
+    ::slotted(*),
+    ha-dialog,
+    ha-bottom-sheet {
       outline: 3px solid red !important;
     }
     ::slotted(ha-icon-button[slot="headerNavigationIcon"]) {
