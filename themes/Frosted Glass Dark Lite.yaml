@@ -475,6 +475,22 @@ Frosted Glass Dark Lite:
     ha-badge,
     .badge {
       --ha-card-box-shadow: var(--frosted-glass-badge-shadow);
+      --ha-badge-border-radius: 12px;   /* Blazely: rounded squares, not pills */
+    }
+    /* Blazely: badge icons sit on a tinted rounded-square chip, like card icons.
+       Native badges slot ha-state-icon into ha-badge; Mushroom template badges
+       put it straight in .badge. Both colour it from --badge-color. */
+    ha-state-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+      width: 26px;
+      height: 26px;
+      margin-inline-start: -4px;
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--badge-color) 22%, transparent);
+      --mdc-icon-size: 16px;
     }
 
   card-mod-sidebar: |
