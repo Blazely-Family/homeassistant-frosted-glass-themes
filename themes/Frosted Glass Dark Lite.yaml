@@ -512,9 +512,15 @@ Frosted Glass Dark Lite:
       font-size: 20px !important;
       font-weight: 600 !important;
     }
-    /* Admins keep the menu: make room for the close button beside it. */
-    ha-dropdown[slot="headerActionItems"] {
+    /* Admins keep the menu: make room for the close button beside it. The
+       dropdown host has no box of its own, so the margin goes on its button. */
+    ha-dropdown[slot="headerActionItems"] > ha-icon-button[slot="trigger"] {
       margin-inline-end: 44px !important;
+    }
+    /* Header icons in the same muted colour as the close button. */
+    [slot="headerActionItems"],
+    ha-dropdown[slot="headerActionItems"] > ha-icon-button[slot="trigger"] {
+      color: var(--secondary-text-color) !important;
     }
     /* Non-admin users (the wall panels): no history. HA only renders the
        settings button and the menu for admins, so a header without the menu
