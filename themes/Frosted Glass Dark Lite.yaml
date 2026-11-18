@@ -589,12 +589,11 @@ Frosted Glass Dark Lite:
       ha-markdown-element ha-icon[icon='mdi:water-percent'] {
         color: #4aa3ff;
       }
-      /* Off-peak: a calm green chip with the time left until peak. */
-      :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(ha-icon[icon='mdi:timer-outline']) {
-        --c: #66bb6a;
-      }
-      :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(ha-icon[icon='mdi:timer-outline']) > span {
-        color: color-mix(in srgb, var(--c) 30%, white);
+      /* Off-peak: like the Peak pill, but the bolt chip is green (no label),
+         followed by the usual grey timer chip. */
+      :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(ha-icon[icon='mdi:flash']) {
+        background: #43a047;
+        color: #f1f8f1;
       }
       /* Weather warning: hazard-yellow bar with a striped ring and a scrolling
          marquee. It grows to fill the width the pills leave (and shrinks as pills
