@@ -551,7 +551,7 @@ Frosted Glass Dark Lite:
       /* Offline sensors need attention, so solid yellow like Peak and Open. */
       :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(ha-icon[icon='mdi:access-point-network-off']),
       :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(ha-icon[icon='mdi:alert']),
-      :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(> ha-icon[icon='mdi:flash']):has(> span) {
+      :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(ha-icon[icon='mdi:flash']) {
         background: #ffc107;
         color: #1c1d21;
       }
@@ -590,9 +590,10 @@ Frosted Glass Dark Lite:
         color: #4aa3ff;
       }
       /* Off-peak: like the Peak pill, but the bolt chip is green with no label,
-         followed by the usual grey timer chip. Both use mdi:flash; Peak's chip
-         has a label <span> (yellow, above) and off-peak's has none. */
-      :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(> ha-icon[icon='mdi:flash']):not(:has(> span)) {
+         followed by the usual grey timer chip. Both use mdi:flash: Peak's chip
+         (yellow, above) also holds its label, off-peak's holds only the icon,
+         and this later, more specific rule turns that one green. */
+      :is(ha-markdown-element, ha-markdown-element > p, ha-markdown-element > details) > :is(div, a) > div:has(ha-icon[icon='mdi:flash']:only-child) {
         background: #43a047;
         color: #f1f8f1;
       }
