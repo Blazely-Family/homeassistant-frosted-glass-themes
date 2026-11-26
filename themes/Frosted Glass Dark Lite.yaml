@@ -10,6 +10,12 @@ Frosted Glass Dark Lite:
     "hui-sections-view $": |
       .container {
         padding-top: 12px !important;
+        /* No bottom padding: on a wall panel it only made a view that fits
+           the screen scroll by a few pixels (an empty section's gap plus this) */
+        padding-bottom: 0 !important;
+      }
+      .wrapper {
+        padding-bottom: 0 !important;
       }
     # Skylight calendar card (custom:skylight-calendar-card). It draws its own panel
     # instead of an ha-card, so the card styles never reach it; style it from the
