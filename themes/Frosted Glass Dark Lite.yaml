@@ -116,6 +116,10 @@ Frosted Glass Dark Lite:
   # =========================
   ha-dialog-surface-backdrop-filter: 'none'
   list-popup-backdrop: 'none'   # Blazely: the List Popup without blur too (Lite: no blur anywhere; hard on the tablets' GPUs)
+  # Blazely EXPERIMENT: the List Popup as glass (card tint made strong enough to read over content, the cards' highlights and edge ring)
+  list-popup-background: 'rgba(28, 29, 33, 0.85)'
+  list-popup-border: 'transparent'
+  list-popup-shadow: 'var(--ha-card-box-shadow)'
   ha-dialog-surface-background: '#3b434d'   # Blazely: slate, matching the calendar card's event popup
   ha-dialog-border-radius: '12px'   # Blazely: calendar popup corners
   dialog-box-shadow: '0 24px 64px rgba(0, 0, 0, 0.48), 0 4px 18px rgba(0, 0, 0, 0.28)'   # Blazely: no edge ring on the slate surface
