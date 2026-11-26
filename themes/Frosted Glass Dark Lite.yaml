@@ -17,6 +17,13 @@ Frosted Glass Dark Lite:
       .wrapper {
         padding-bottom: 0 !important;
       }
+    # The navbar card sits in the view footer but draws itself fixed, so the
+    # footer is empty; its 8px top and bottom padding alone made views scroll.
+    "hui-sections-view $ hui-view-footer $": |
+      .wrapper {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
     # Skylight calendar card (custom:skylight-calendar-card). It draws its own panel
     # instead of an ha-card, so the card styles never reach it; style it from the
     # section grid it sits in. Covers the week and month layouts.
