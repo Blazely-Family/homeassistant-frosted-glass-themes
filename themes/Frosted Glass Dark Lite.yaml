@@ -15,6 +15,21 @@ Frosted Glass Dark Lite:
     # instead of an ha-card, so the card styles never reach it; style it from the
     # section grid it sits in. Covers the week and month layouts.
     "hui-sections-view $ hui-grid-section $": |
+      /* Its own event pop-up (and confirm / day pop-ups) has a hard-coded slate in
+         dark mode; give it the List Popup's glass and darker backdrop like HA's dialogs */
+      skylight-calendar-card .calendar-container .event-modal {
+        background: var(--list-popup-scrim, rgba(0, 0, 0, 0.5)) !important;
+      }
+      skylight-calendar-card .calendar-container .modal-content,
+      skylight-calendar-card .calendar-container .confirm-dialog {
+        background: var(--list-popup-background, #3b434d) !important;
+        border-color: transparent !important;
+        box-shadow: var(--ha-card-box-shadow) !important;
+      }
+      skylight-calendar-card .calendar-container .day-modal-event {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-color: transparent !important;
+      }
       /* Same surface as an ha-card */
       skylight-calendar-card .calendar-container {
         background: var(--ha-card-glass-tint, transparent) !important;
