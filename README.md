@@ -4,7 +4,7 @@
 > a 25% card tint, rounded-square card icons, stronger corner highlights, Home Assistant's own control corner radii,
 > a darker sidebar, an edge ring on dialogs, an orange glow on cards of active entities,
 > camera cards with their edge drawn above the video, the navbar as a glass card, the toggle feature's off state,
-> Skylight calendar card styling, and clock / Music Assistant player card variables.
+> Skylight calendar card styling, clock / Music Assistant player card variables, and no blur on the List Popup.
 > Installed as a Marketplace custom repository. Other variants are upstream as-is.
 
 [![HACS Badge](https://img.shields.io/badge/Available%20in-HACS-41BDF5?logo=home-assistant&logoColor=white)](https://my.home-assistant.io/redirect/hacs_repository/?owner=WessamLauf&repository=homeassistant-frosted-glass-themes&category=theme)
