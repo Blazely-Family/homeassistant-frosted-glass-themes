@@ -440,11 +440,31 @@ Frosted Glass Dark Lite:
       } %}
       {% set _active = _d in _active_map and _s in _active_map[_d] %}
       {% set _motion = _d in _motion_map and _s in _motion_map[_d] %}
+      {# Blazely: a climate that is cooling, on fan only or drying glows in Home
+         Assistant's own colour for that mode (the same as its selected mode button),
+         not the heat-looking orange. A heat_cool/auto unit follows hvac_action. #}
+      {% set _hvac = (states[_entity].attributes.hvac_action | default('')) if _d == 'climate' else '' %}
+      {% set _climate_mode = _s if _s in ['cool', 'fan_only', 'dry'] else
+           ({'cooling': 'cool', 'fan': 'fan_only', 'drying': 'dry'}[_hvac] | default('')
+             if _s in ['heat_cool', 'auto'] and _hvac in ['cooling', 'fan', 'drying'] else '') %}
+      {% set _glow = ('var(--state-climate-' ~ _climate_mode ~ '-color)') if _d == 'climate' and _climate_mode else '' %}
       @keyframes active-border-pulse {
         0%, 100% { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 14px 4px rgba(255, 158, 0, 0.35); }
         50%       { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 6px 1px rgba(255, 158, 0, 0.10); }
       }
-      {% if _active %}
+      {% if _active and _glow %}
+      ha-card {
+        --ha-card-glass-tint: color-mix(in srgb, {{ _glow }} 10%, transparent);
+        --ha-card-border-color: color-mix(in srgb, {{ _glow }} 35%, transparent);
+        box-shadow:
+          3px 3px 0.5px -3.5px color-mix(in srgb, {{ _glow }} 65%, transparent) inset,
+          -2px -2px 0.5px -2px color-mix(in srgb, {{ _glow }} 43%, transparent) inset,
+          0 0 6px 1px color-mix(in srgb, {{ _glow }} 50%, transparent) inset,
+          0 0 0 1px color-mix(in srgb, {{ _glow }} 35%, transparent),
+          var(--frosted-glass-card-depth-shadow),
+          0 0 8px 1px color-mix(in srgb, {{ _glow }} 18%, transparent) !important;
+      }
+      {% elif _active %}
       ha-card {
         --ha-card-glass-tint: rgba(255, 140, 0, 0.10);
         --ha-card-border-color: rgba(255, 180, 30, 0.35);
