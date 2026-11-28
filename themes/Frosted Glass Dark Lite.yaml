@@ -555,7 +555,7 @@ Frosted Glass Dark Lite:
         top: 50%;
         transform: translateY(-50%);
         width: 4px;
-        height: 75%;
+        height: 36px;   /* the icon chip's height */
         border-radius: 3px;
         /* filled from the bottom to the light's brightness, on a faint track */
         background: linear-gradient(to top, var(--blazely-light-dot, transparent) var(--blazely-light-level, 100%), rgba(234, 235, 238, 0.18) var(--blazely-light-level, 100%));
