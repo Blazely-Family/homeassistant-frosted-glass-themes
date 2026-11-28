@@ -955,8 +955,8 @@ Frosted Glass Dark Lite:
   # brightness bars and Mushroom's amber); the status strip's alert pills use the same.
   amber-color: '#ffb300'
   # Blazely: icons on an active (solid amber) chip or switch knob: the panel's dark
-  # the theme's own badge grey (label-badge-grey) rather than black
-  blazely-active-icon-color: 'rgb(83, 90, 103)'
+  # the theme's badge grey (label-badge-grey) darkened a step with the panel's #1c1d21
+  blazely-active-icon-color: 'color-mix(in srgb, rgb(83, 90, 103) 65%, #1c1d21)'
   mush-rgb-amber: '255, 179, 0'
   state-light-active-color: 'var(--state-active-color)'
   state-switch-active-color: 'var(--state-active-color)'
