@@ -2,7 +2,7 @@
 
 > **Blazely-Family fork.** Upstream with our changes to *Frosted Glass Dark Lite* only:
 > a 25% card tint, rounded-square card icons, stronger corner highlights, Home Assistant's own control corner radii,
-> a darker sidebar, an edge ring on dialogs, an orange glow on cards of active entities,
+> a darker sidebar, an edge ring on dialogs, a glow and icon colour on cards of active entities in Home Assistant's active amber (climate in its mode's colour, heating orange), amber toggle switches and brightness bars when on,
 > camera cards with their edge drawn above the video, the navbar as a glass card, the toggle feature's off state,
 > Skylight calendar card styling, clock / Music Assistant player card variables, and no blur on the List Popup.
 > Installed as a Marketplace custom repository. Other variants are upstream as-is.
