@@ -512,7 +512,6 @@ Frosted Glass Dark Lite:
       ha-card {
         --blazely-light-dot: var(--tile-color);
         --blazely-light-dot-content: "";
-        --blazely-light-pill-space: 12px;
         --blazely-light-level: {{ ((states[_entity].attributes.brightness | default(255) | float(255)) / 255 * 100) | round(0) }}%;
       }
       {% endif %}
@@ -545,18 +544,17 @@ Frosted Glass Dark Lite:
     # between its icon and its name/state. Gated by variables the card sets only
     # for lights that are on.
     "ha-tile-info $": |
+      /* sits in the existing gap between icon and text, so nothing moves */
       .info {
         position: relative;
-        padding-left: var(--blazely-light-pill-space, 0);
-        box-sizing: border-box;
       }
       .info::before {
         content: var(--blazely-light-dot-content, none);
         position: absolute;
-        left: 0;
+        left: -7px;
         top: 50%;
         transform: translateY(-50%);
-        width: 5px;
+        width: 4px;
         height: 75%;
         border-radius: 3px;
         /* filled from the bottom to the light's brightness, on a faint track */
