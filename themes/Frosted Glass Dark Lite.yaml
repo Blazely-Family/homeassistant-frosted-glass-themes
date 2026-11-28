@@ -180,9 +180,12 @@ Frosted Glass Dark Lite:
   bubble-horizontal-buttons-stack-border-radius: '18px'
   bubble-horizontal-buttons-stack-background-color: 'transparent'
   navbar-background-color: 'transparent'
-  # Selected navbar tab: navbar-card fills it with this colour at 30%, so the
-  # palette's light text colour gives a medium grey (not a state colour).
-  navbar-primary-color: 'rgb(234, 235, 238)'
+  navbar-primary-color: 'rgb(122, 162, 190)'
+  # Selected navbar tab, filled at 30% so the palette's light text colour gives
+  # a medium grey (not a state colour). navbar-card redefines
+  # --navbar-primary-color on its own :host, so the theme can't recolour the
+  # tab through that var; the card-mod rule below uses this one instead.
+  navbar-selected-color: 'rgb(234, 235, 238)'
   navbar-border-radius: '18px'
   navbar-box-shadow: 'var(--ha-card-box-shadow)'
   navbar-box-shadow-desktop: 'var(--ha-card-box-shadow)'
@@ -315,6 +318,12 @@ Frosted Glass Dark Lite:
       :host(navbar-card) .popup-item .button {
 
         border: var(--ha-card-border);
+      }
+      /* Blazely: selected navbar tab in medium grey, not the primary colour.
+         Popup items keep the card's own look. */
+      :host(navbar-card) .button.active {
+        background: color-mix(in srgb, var(--navbar-selected-color, rgb(234, 235, 238)) 30%, transparent) !important;
+        --icon-primary-color: var(--primary-text-color);
       }
 
       :host(:where(slider-button-card, .type-custom-slider-button-card)) {
