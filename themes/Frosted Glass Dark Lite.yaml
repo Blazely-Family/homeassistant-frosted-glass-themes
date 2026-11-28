@@ -524,6 +524,12 @@ Frosted Glass Dark Lite:
       div#switch:not([checked]) div.button {
         background-color: rgba(234, 235, 238, 0.25) !important;
       }
+    # Blazely: on, every toggle switch is Home Assistant's active colour (amber, the
+    # alert pills' yellow), not the light's own colour; the icon keeps that.
+    "hui-card-features $ hui-card-feature $ hui-toggle-card-feature $": |
+      :host {
+        --feature-color: var(--state-active-color) !important;
+      }
 
   # Global glass tokens are inherited by dialogs, sidebar and custom cards.
   ha-card-glass-tint: 'rgba(28, 29, 33, 0.25)'   # Blazely: a little tint
