@@ -470,7 +470,7 @@ Frosted Glass Dark Lite:
       {% if _active and _glow %}
       ha-card {
         --ha-card-glass-tint: color-mix(in srgb, {{ _glow }} 20%, transparent);
-        --ha-card-border-color: color-mix(in srgb, {{ _glow }} 80%, transparent);
+        --ha-card-border-color: {{ _glow }};
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
         box-shadow:
           3px 3px 0.5px -3.5px color-mix(in srgb, {{ _glow }} 65%, transparent) inset,
@@ -484,7 +484,7 @@ Frosted Glass Dark Lite:
       {% elif _active %}
       ha-card {
         --ha-card-glass-tint: rgba(255, 140, 0, 0.20);
-        --ha-card-border-color: rgba(255, 180, 30, 0.80);
+        --ha-card-border-color: rgb(255, 180, 30);
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
         box-shadow:
           3px 3px 0.5px -3.5px rgba(255, 200, 30, 0.65) inset,
