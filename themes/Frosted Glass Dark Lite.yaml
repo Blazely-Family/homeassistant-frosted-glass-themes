@@ -325,6 +325,11 @@ Frosted Glass Dark Lite:
         background: color-mix(in srgb, var(--navbar-selected-color, rgb(234, 235, 238)) 30%, transparent) !important;
         --icon-primary-color: var(--primary-text-color);
       }
+      /* Blazely: navbar-card pins itself 16px from the screen edge, which left it
+         10px from the cards; 12px centres it in the gap (matches the page margin). */
+      :host(navbar-card) .navbar.desktop.right {
+        right: 12px !important;
+      }
 
       :host(:where(slider-button-card, .type-custom-slider-button-card)) {
         --btn-bg-color-off: var(--frosted-glass-slider-button-off);
