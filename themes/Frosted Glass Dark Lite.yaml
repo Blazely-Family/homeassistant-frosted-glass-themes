@@ -498,7 +498,7 @@ Frosted Glass Dark Lite:
       {% endif %}
 
       /* === Blazely: a light that is on gets a solid active-colour icon chip with a
-         dark icon, like a switch knob, and a slim pill beside its text in the light's own colour
+         dark icon, like a switch knob, and a brightness line under its switch in the light's own colour
          (Home Assistant's tile colour for it). === */
       {% if _active and _d == 'light' %}
       ha-tile-icon {
@@ -540,26 +540,6 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
-    # Blazely: a light that is on gets a slim vertical pill in its own colour
-    # between its icon and its name/state. Gated by variables the card sets only
-    # for lights that are on.
-    "ha-tile-info $": |
-      /* sits in the existing gap between icon and text, so nothing moves */
-      .info {
-        position: relative;
-      }
-      .info::before {
-        content: var(--blazely-light-dot-content, none);
-        position: absolute;
-        left: -7px;
-        top: 2px;      /* spans the name and state lines */
-        bottom: 2px;
-        width: 4px;
-        border-radius: 999px;
-        /* filled from the bottom to the light's brightness, on a faint track */
-        background: linear-gradient(to top, var(--blazely-light-dot, transparent) var(--blazely-light-level, 100%), rgba(234, 235, 238, 0.18) var(--blazely-light-level, 100%));
-        box-shadow: 0 0 0 1px rgba(28, 29, 33, 0.6);
-      }
     # Blazely: Home Assistant draws the icon chip only behind icons that are tappable
     # themselves (icon_tap_action). Keep that, and give the other icons a ring in
     # their colour instead, so every icon has the same rounded-square outline. The
@@ -599,6 +579,22 @@ Frosted Glass Dark Lite:
     "hui-card-features $ hui-card-feature $ hui-toggle-card-feature $": |
       ha-control-switch {
         --control-switch-on-color: var(--state-active-color) !important;
+      }
+      /* Blazely: under the switch of a light that is on, a thin line in the light's
+         own colour, filled left to right to its brightness (the card sets the
+         variables only for lights that are on). */
+      ha-control-switch {
+        position: relative;
+      }
+      ha-control-switch::after {
+        content: var(--blazely-light-dot-content, none);
+        position: absolute;
+        left: 6px;
+        right: 6px;
+        bottom: -7px;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(to right, var(--blazely-light-dot, transparent) var(--blazely-light-level, 100%), rgba(234, 235, 238, 0.18) var(--blazely-light-level, 100%));
       }
     # Blazely: the brightness bar's fill is the same amber (an off light's bar is
     # empty, and its track keeps Home Assistant's own colour). The styling engine
