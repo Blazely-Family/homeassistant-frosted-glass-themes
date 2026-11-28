@@ -510,6 +510,14 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
+      /* === Blazely: thermostat card titles at the same medium weight as every
+         other card name (Home Assistant draws them at normal weight) === */
+      {% if config.type is defined and config.type == "thermostat" %}
+      .title {
+        font-weight: var(--ha-font-weight-medium);
+      }
+      {% endif %}
+
       /* === Blazely: unavailable. Faint diagonal stripes on their own layer, over
          the glass and under the content (a card background would be cleared by
          the Mushroom template card rule above) === */
