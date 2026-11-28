@@ -530,6 +530,12 @@ Frosted Glass Dark Lite:
       ha-control-switch {
         --control-switch-on-color: var(--state-active-color) !important;
       }
+    # Blazely: the brightness bar's fill is the same amber (an off light's bar is
+    # empty, and its track keeps Home Assistant's own colour).
+    "hui-card-features $ hui-card-feature $ hui-light-brightness-card-feature $": |
+      ha-control-slider {
+        --control-slider-color: var(--state-active-color) !important;
+      }
 
   # Global glass tokens are inherited by dialogs, sidebar and custom cards.
   ha-card-glass-tint: 'rgba(28, 29, 33, 0.25)'   # Blazely: a little tint
