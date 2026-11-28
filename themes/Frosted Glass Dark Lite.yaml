@@ -460,7 +460,7 @@ Frosted Glass Dark Lite:
       }
       {% if _active and _glow %}
       ha-card {
-        --ha-card-glass-tint: color-mix(in srgb, {{ _glow }} 45%, transparent);
+        --ha-card-glass-tint: color-mix(in srgb, {{ _glow }} 65%, transparent);
         --ha-card-border-color: color-mix(in srgb, {{ _glow }} 70%, transparent);
         --ha-card-border-width: 1.5px;
         --primary-text-color: #1c1d21;
