@@ -591,7 +591,7 @@ Frosted Glass Dark Lite:
         position: absolute;
         left: 6px;
         right: 6px;
-        bottom: -7px;
+        bottom: -6px;
         height: 4px;
         border-radius: 999px;
         background: linear-gradient(to right, var(--blazely-light-dot, transparent) var(--blazely-light-level, 100%), rgba(234, 235, 238, 0.18) var(--blazely-light-level, 100%));
