@@ -511,8 +511,11 @@ Frosted Glass Dark Lite:
       }
       ha-card {
         --blazely-light-dot: var(--tile-color);
-        --blazely-light-dot-content: "";
-        --blazely-light-level: {{ ((states[_entity].attributes.brightness | default(255) | float(255)) / 255 * 100) | round(0) }}%;
+        {# A light group reports no brightness for a moment as it turns on; draw the
+           brightness line only once it does, so it doesn't flash full and drop back #}
+        {% set _bri = states[_entity].attributes.brightness | default(none) %}
+        --blazely-light-dot-content: {{ ('""') if _bri is number else 'none' }};
+        --blazely-light-level: {{ ((_bri / 255 * 100) | round(0)) if _bri is number else 100 }}%;
       }
       {% endif %}
 
