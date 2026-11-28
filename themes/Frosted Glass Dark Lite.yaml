@@ -531,8 +531,10 @@ Frosted Glass Dark Lite:
         --control-switch-on-color: var(--state-active-color) !important;
       }
     # Blazely: the brightness bar's fill is the same amber (an off light's bar is
-    # empty, and its track keeps Home Assistant's own colour).
-    "hui-card-features $ hui-card-feature $ hui-light-brightness-card-feature $": |
+    # empty, and its track keeps Home Assistant's own colour). The styling engine
+    # follows only the first match at each step, so name the second feature, where
+    # the brightness bar sits under the toggle.
+    "hui-card-features $ hui-card-feature:nth-of-type(2) $ hui-light-brightness-card-feature $": |
       ha-control-slider {
         --control-slider-color: var(--state-active-color) !important;
       }
