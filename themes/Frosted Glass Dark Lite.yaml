@@ -513,6 +513,7 @@ Frosted Glass Dark Lite:
         --blazely-light-dot: var(--tile-color);
         --blazely-light-dot-content: "";
         --blazely-light-pill-space: 12px;
+        --blazely-light-level: {{ ((states[_entity].attributes.brightness | default(255) | float(255)) / 255 * 100) | round(0) }}%;
       }
       {% endif %}
 
@@ -557,7 +558,8 @@ Frosted Glass Dark Lite:
         width: 5px;
         height: 75%;
         border-radius: 3px;
-        background-color: var(--blazely-light-dot, transparent);
+        /* filled from the bottom to the light's brightness, on a faint track */
+        background: linear-gradient(to top, var(--blazely-light-dot, transparent) var(--blazely-light-level, 100%), rgba(234, 235, 238, 0.18) var(--blazely-light-level, 100%));
         box-shadow: 0 0 0 1px rgba(28, 29, 33, 0.6);
       }
     # Blazely: Home Assistant draws the icon chip only behind icons that are tappable
