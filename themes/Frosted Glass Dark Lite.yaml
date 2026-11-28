@@ -497,6 +497,19 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
+      /* === Blazely: a light that is on shows the active colour on its icon like
+         everything else, and a small dot on the icon in the light's own colour
+         (Home Assistant's tile colour for it). === */
+      {% if _active and _d == 'light' %}
+      ha-tile-icon {
+        --tile-icon-color: var(--state-active-color) !important;
+      }
+      ha-card {
+        --blazely-light-dot: var(--tile-color);
+        --blazely-light-dot-display: block;
+      }
+      {% endif %}
+
       /* === Blazely: unavailable. Faint diagonal stripes on their own layer, over
          the glass and under the content (a card background would be cleared by
          the Mushroom template card rule above) === */
@@ -519,6 +532,19 @@ Frosted Glass Dark Lite:
     # grey "off" icon get the same ring. (The color-mix line is for browsers without
     # relative colours.)
     "ha-tile-icon $": |
+      /* Blazely: the light-colour dot (set by the card when a light is on). */
+      .container::after {
+        content: '';
+        display: var(--blazely-light-dot-display, none);
+        position: absolute;
+        right: 3px;
+        bottom: 3px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--blazely-light-dot, transparent);
+        box-shadow: 0 0 0 1.5px rgba(28, 29, 33, 0.7);
+      }
       .container:not(.background) {
         box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--tile-icon-color) 60%, transparent);
         box-shadow: inset 0 0 0 2px rgb(from var(--tile-icon-color) r g b / 0.48);
