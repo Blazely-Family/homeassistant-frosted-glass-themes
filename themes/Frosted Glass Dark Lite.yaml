@@ -517,10 +517,11 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
-      /* === Blazely: thermostat card titles at the same medium weight as every
-         other card name (Home Assistant draws them at normal weight) === */
+      /* === Blazely: thermostat card titles at the same size and medium weight as
+         every other card name (Home Assistant draws them larger, at normal weight) === */
       {% if config.type is defined and config.type == "thermostat" %}
       .title {
+        font-size: var(--ha-font-size-m);
         font-weight: var(--ha-font-weight-medium);
       }
       {% endif %}
