@@ -687,7 +687,7 @@ Frosted Glass Dark Lite:
       --token-rgb-light-green: 139, 195, 74;
       --token-rgb-lime: 205, 220, 57;
       --token-rgb-yellow: 250, 183, 0;
-      --token-rgb-amber: 255, 193, 7;
+      --token-rgb-amber: 255, 179, 0;
       --token-rgb-orange: 255, 158, 0;
       --token-rgb-deep-orange: 255, 87, 34;
       --token-rgb-brown: 121, 85, 72;
@@ -870,6 +870,13 @@ Frosted Glass Dark Lite:
   state-icon-color: 'rgba(234, 235, 238, 0.95)'
   state-on-color: 'rgb(118, 214, 152)'
   state-off-color: 'rgb(234, 114, 135)'
+  # Blazely: sunflower rather than canary for everything active (cards, icons, switches,
+  # brightness bars and Mushroom's amber); the status strip's alert pills use the same.
+  amber-color: '#ffb300'
+  mush-rgb-amber: '255, 179, 0'
+  state-light-active-color: 'var(--state-active-color)'
+  state-switch-active-color: 'var(--state-active-color)'
+  state-binary_sensor-active-color: 'var(--state-active-color)'
   # Blazely: one "active" colour for everything that is on, open, running or away:
   # Home Assistant's own active colour (amber, the alert pills' yellow). Lights,
   # switches and binary sensors already use it; climate keeps its per-mode colours.
