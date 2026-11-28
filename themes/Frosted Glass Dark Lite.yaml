@@ -590,7 +590,7 @@ Frosted Glass Dark Lite:
         position: relative;
       }
       ha-control-switch::after {
-        content: var(--blazely-light-dot-content, none);
+        content: none;   /* TEST: brightness line off to isolate a flash */
         position: absolute;
         left: 6px;
         right: 6px;
