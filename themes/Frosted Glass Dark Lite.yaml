@@ -459,7 +459,8 @@ Frosted Glass Dark Lite:
       {% if _active and _glow %}
       ha-card {
         --ha-card-glass-tint: color-mix(in srgb, {{ _glow }} 20%, transparent);
-        --ha-card-border-color: color-mix(in srgb, {{ _glow }} 50%, transparent);
+        --ha-card-border-color: color-mix(in srgb, {{ _glow }} 80%, transparent);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
         box-shadow:
           3px 3px 0.5px -3.5px color-mix(in srgb, {{ _glow }} 65%, transparent) inset,
           -2px -2px 0.5px -2px color-mix(in srgb, {{ _glow }} 43%, transparent) inset,
@@ -472,7 +473,8 @@ Frosted Glass Dark Lite:
       {% elif _active %}
       ha-card {
         --ha-card-glass-tint: rgba(255, 140, 0, 0.20);
-        --ha-card-border-color: rgba(255, 180, 30, 0.50);
+        --ha-card-border-color: rgba(255, 180, 30, 0.80);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
         box-shadow:
           3px 3px 0.5px -3.5px rgba(255, 200, 30, 0.65) inset,
           -2px -2px 0.5px -2px rgba(255, 200, 30, 0.43) inset,
@@ -526,9 +528,12 @@ Frosted Glass Dark Lite:
       }
       /* Blazely: an on switch sits on a dark track, so its amber knob stands out
          from an active card's amber tint. */
+      div#switch[checked] div.button {
+        color: #1c1d21 !important;
+      }
       div#switch[checked] div.background {
         background-color: rgb(28, 29, 33) !important;
-        opacity: 0.28 !important;
+        opacity: 0.5 !important;
       }
     # Blazely: on, every toggle switch is Home Assistant's active colour (amber, the
     # alert pills' yellow), not the light's own colour; the icon keeps that.
