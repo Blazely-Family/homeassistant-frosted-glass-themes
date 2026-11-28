@@ -458,7 +458,7 @@ Frosted Glass Dark Lite:
       }
       {% if _active and _glow %}
       ha-card {
-        --ha-card-glass-tint: color-mix(in srgb, {{ _glow }} 10%, transparent);
+        --ha-card-glass-tint: color-mix(in srgb, {{ _glow }} 25%, transparent);
         --ha-card-border-color: color-mix(in srgb, {{ _glow }} 35%, transparent);
         box-shadow:
           3px 3px 0.5px -3.5px color-mix(in srgb, {{ _glow }} 65%, transparent) inset,
@@ -471,7 +471,7 @@ Frosted Glass Dark Lite:
       }
       {% elif _active %}
       ha-card {
-        --ha-card-glass-tint: rgba(255, 140, 0, 0.10);
+        --ha-card-glass-tint: rgba(255, 140, 0, 0.25);
         --ha-card-border-color: rgba(255, 180, 30, 0.35);
         box-shadow:
           3px 3px 0.5px -3.5px rgba(255, 200, 30, 0.65) inset,
