@@ -498,7 +498,7 @@ Frosted Glass Dark Lite:
       {% endif %}
 
       /* === Blazely: a light that is on gets a solid active-colour icon chip with a
-         dark icon, like a switch knob, and a small dot before its state text in the light's own colour
+         dark icon, like a switch knob, and a slim pill beside its text in the light's own colour
          (Home Assistant's tile colour for it). === */
       {% if _active and _d == 'light' %}
       ha-tile-icon {
@@ -512,11 +512,7 @@ Frosted Glass Dark Lite:
       ha-card {
         --blazely-light-dot: var(--tile-color);
         --blazely-light-dot-content: "";
-        --blazely-light-dot-radius: 50%;
-        --blazely-light-dot-size: 9px;
-        --blazely-light-dot-gap: 6px;
-        --blazely-light-dot-shrink: 0;
-        --blazely-light-dot-ring: 0 0 0 1.5px rgba(28, 29, 33, 0.7);
+        --blazely-light-pill-space: 12px;
       }
       {% endif %}
 
@@ -543,20 +539,26 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
-    # Blazely: a light that is on gets a dot in its own colour just before its
-    # state text. Everything is gated by variables the card sets only for lights
-    # that are on, so other cards' own ::before content (the heaters' thermometer)
-    # is left alone.
+    # Blazely: a light that is on gets a slim vertical pill in its own colour
+    # between its icon and its name/state. Gated by variables the card sets only
+    # for lights that are on.
     "ha-tile-info $": |
-      .secondary::before {
+      .info {
+        position: relative;
+        padding-left: var(--blazely-light-pill-space, 0);
+        box-sizing: border-box;
+      }
+      .info::before {
         content: var(--blazely-light-dot-content, none);
-        width: var(--blazely-light-dot-size, auto);
-        height: var(--blazely-light-dot-size, auto);
-        margin-right: var(--blazely-light-dot-gap, 0);
-        flex-shrink: var(--blazely-light-dot-shrink, 1);
-        border-radius: var(--blazely-light-dot-radius, 0);
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 5px;
+        height: 75%;
+        border-radius: 3px;
         background-color: var(--blazely-light-dot, transparent);
-        box-shadow: var(--blazely-light-dot-ring, none);
+        box-shadow: 0 0 0 1px rgba(28, 29, 33, 0.6);
       }
     # Blazely: Home Assistant draws the icon chip only behind icons that are tappable
     # themselves (icon_tap_action). Keep that, and give the other icons a ring in
