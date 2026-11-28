@@ -497,12 +497,17 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
-      /* === Blazely: a light that is on shows the active colour on its icon like
-         everything else, and a small dot on the icon in the light's own colour
+      /* === Blazely: a light that is on gets a solid active-colour icon chip with a
+         dark icon, like a switch knob, and a small dot on the icon in the light's own colour
          (Home Assistant's tile colour for it). === */
       {% if _active and _d == 'light' %}
       ha-tile-icon {
         --tile-icon-color: var(--state-active-color) !important;
+        --tile-icon-opacity: 1;
+        --tile-icon-hover-opacity: 1;
+      }
+      ha-state-icon {
+        color: #1c1d21 !important;
       }
       ha-card {
         --blazely-light-dot: var(--tile-color);
