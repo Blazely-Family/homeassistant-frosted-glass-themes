@@ -504,18 +504,29 @@ Frosted Glass Dark Lite:
       }
       {% endif %}
 
-      /* === Blazely: a light that is on gets a solid active-colour icon chip with a
-         dark icon, like a switch knob, and a brightness line under its switch in the light's own colour
-         (Home Assistant's tile colour for it). === */
-      {% if _active and _d == 'light' %}
+      /* === Blazely: every active card gets a solid icon chip in its active colour
+         (amber, a climate mode's colour, or the heating orange) with a dark icon,
+         like a switch knob. Tile and Mushroom 5 cards use ha-tile-icon; the
+         timer-bar rows (washer, dryer) read the two variables below. === */
+      {% if _active %}
+      {% set _chip = _glow if _glow else 'rgb(255, 158, 0)' %}
       ha-tile-icon {
-        --tile-icon-color: var(--state-active-color) !important;
+        --tile-icon-color: {{ _chip }} !important;
         --tile-icon-opacity: 1;
         --tile-icon-hover-opacity: 1;
       }
       ha-state-icon {
         color: #1c1d21 !important;
       }
+      ha-card {
+        --blazely-chip-bg: {{ _chip }};
+        --blazely-chip-fg: #1c1d21;
+      }
+      {% endif %}
+
+      /* === Blazely: a light that is on also gets a brightness line under its switch
+         in the light's own colour (Home Assistant's tile colour for it). === */
+      {% if _active and _d == 'light' %}
       ha-card {
         --blazely-light-dot: var(--tile-color);
         {# A light group reports no brightness for a moment as it turns on; draw the
@@ -567,6 +578,9 @@ Frosted Glass Dark Lite:
       mushroom-shape-icon {
         --icon-color-disabled: rgba(234, 235, 238, 0.8) !important;
         --shape-color-disabled: rgba(234, 235, 238, 0.16) !important;
+        /* when the card is active: solid chip, dark icon (the card sets these) */
+        --icon-color: var(--blazely-chip-fg, rgb(var(--rgb-state-entity))) !important;
+        --shape-color: var(--blazely-chip-bg, rgba(var(--rgb-state-entity), 0.2)) !important;
       }
     # Blazely: the toggle feature's switch is greyed when off; when on it keeps Home
     # Assistant's on colour. (Not a template: _active can't see the card's entity
