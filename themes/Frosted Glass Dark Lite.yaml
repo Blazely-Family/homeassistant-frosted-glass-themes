@@ -511,7 +511,9 @@ Frosted Glass Dark Lite:
       {% if _active %}
       {% set _chip = _glow if _glow else 'rgb(255, 158, 0)' %}
       ha-tile-icon {
-        --tile-icon-color: {{ _chip }} !important;
+        {# Mushroom template cards choose their own chip colour (the doors: amber when
+           open, red while moving), so only make their chip solid #}
+        {% if not (config.type is defined and config.type == "custom:mushroom-template-card") %}--tile-icon-color: {{ _chip }} !important;{% endif %}
         --tile-icon-opacity: 1;
         --tile-icon-hover-opacity: 1;
       }
