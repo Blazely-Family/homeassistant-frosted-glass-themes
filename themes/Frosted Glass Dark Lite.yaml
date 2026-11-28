@@ -518,11 +518,11 @@ Frosted Glass Dark Lite:
         --tile-icon-hover-opacity: 1;
       }
       ha-state-icon {
-        color: #1c1d21 !important;
+        color: var(--blazely-active-icon-color) !important;
       }
       ha-card {
         --blazely-chip-bg: {{ _chip }};
-        --blazely-chip-fg: #1c1d21;
+        --blazely-chip-fg: var(--blazely-active-icon-color);
       }
       {% endif %}
 
@@ -594,7 +594,7 @@ Frosted Glass Dark Lite:
       /* Blazely: an on switch sits on a dark track, so its amber knob stands out
          from an active card's amber tint. */
       div#switch[checked] div.button {
-        color: #1c1d21 !important;
+        color: var(--blazely-active-icon-color) !important;
       }
       div#switch[checked] div.background {
         background-color: rgb(28, 29, 33) !important;
@@ -954,6 +954,9 @@ Frosted Glass Dark Lite:
   # Blazely: sunflower rather than canary for everything active (cards, icons, switches,
   # brightness bars and Mushroom's amber); the status strip's alert pills use the same.
   amber-color: '#ffb300'
+  # Blazely: icons on an active (solid amber) chip or switch knob: the panel's dark
+  # #1c1d21 at 80%, a warm dark grey on the yellow rather than black
+  blazely-active-icon-color: 'rgba(28, 29, 33, 0.8)'
   mush-rgb-amber: '255, 179, 0'
   state-light-active-color: 'var(--state-active-color)'
   state-switch-active-color: 'var(--state-active-color)'
