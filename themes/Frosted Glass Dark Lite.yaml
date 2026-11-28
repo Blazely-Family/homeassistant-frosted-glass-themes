@@ -447,10 +447,14 @@ Frosted Glass Dark Lite:
       {% set _climate_mode = _s if _s in ['cool', 'fan_only', 'dry'] else
            ({'cooling': 'cool', 'fan': 'fan_only', 'drying': 'dry'}[_hvac] | default('')
              if _s in ['heat_cool', 'auto'] and _hvac in ['cooling', 'fan', 'drying'] else '') %}
-      {% set _glow = ('var(--state-climate-' ~ _climate_mode ~ '-color)') if _d == 'climate' and _climate_mode else '' %}
+      {# Blazely: everything else that is active glows in Home Assistant's own active
+         colour (amber, the same yellow as the alert pills). A heating climate keeps
+         the theme's orange (the elif branch below). #}
+      {% set _glow = ('var(--state-climate-' ~ _climate_mode ~ '-color)') if _d == 'climate' and _climate_mode
+           else ('' if _d == 'climate' else 'var(--state-active-color)') %}
       @keyframes active-border-pulse {
-        0%, 100% { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 14px 4px rgba(255, 158, 0, 0.35); }
-        50%       { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 6px 1px rgba(255, 158, 0, 0.10); }
+        0%, 100% { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 14px 4px color-mix(in srgb, var(--state-active-color) 35%, transparent); }
+        50%       { box-shadow: var(--frosted-glass-card-depth-shadow), 0 0 6px 1px color-mix(in srgb, var(--state-active-color) 10%, transparent); }
       }
       {% if _active and _glow %}
       ha-card {
@@ -463,6 +467,7 @@ Frosted Glass Dark Lite:
           0 0 0 1px color-mix(in srgb, {{ _glow }} 35%, transparent),
           var(--frosted-glass-card-depth-shadow),
           0 0 8px 1px color-mix(in srgb, {{ _glow }} 18%, transparent) !important;
+        {% if _motion %}animation: active-border-pulse 1.4s ease-in-out infinite;{% endif %}
       }
       {% elif _active %}
       ha-card {
@@ -840,6 +845,18 @@ Frosted Glass Dark Lite:
   state-icon-color: 'rgba(234, 235, 238, 0.95)'
   state-on-color: 'rgb(118, 214, 152)'
   state-off-color: 'rgb(234, 114, 135)'
+  # Blazely: one "active" colour for everything that is on, open, running or away:
+  # Home Assistant's own active colour (amber, the alert pills' yellow). Lights,
+  # switches and binary sensors already use it; climate keeps its per-mode colours.
+  state-cover-active-color: 'var(--state-active-color)'
+  state-fan-active-color: 'var(--state-active-color)'
+  state-media_player-active-color: 'var(--state-active-color)'
+  state-vacuum-active-color: 'var(--state-active-color)'
+  state-humidifier-on-color: 'var(--state-active-color)'
+  state-valve-active-color: 'var(--state-active-color)'
+  state-lawn_mower-active-color: 'var(--state-active-color)'
+  state-person-active-color: 'var(--state-active-color)'
+  state-device_tracker-active-color: 'var(--state-active-color)'
   label-badge-text-color: 'rgba(234, 235, 238, 0.85)'
   label-badge-red: 'rgb(234, 114, 135)'
   label-badge-blue: 'rgb(122, 162, 190)'
